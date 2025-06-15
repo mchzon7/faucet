@@ -1,0 +1,185 @@
+
+
+
+
+<!-- Dashboard Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ECF0F1;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .navbar {
+      background-color: #2C3E50;
+    }
+    .navbar .nav-link, .navbar-brand {
+      color: #ECF0F1 !important;
+    }
+    .card {
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .progress-bar {
+      background-color: #F39C12;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">CRASHCASH</a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon bg-white"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="faucetDropdown" role="button" data-bs-toggle="dropdown">
+              Faucet List
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="http://localhost:8000/">Solve-task</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8000/typing-captcha">Type-task</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8000/ptc3">V-ShortLinks</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8000/page1">V-pages</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="faucetDropdown" role="button" data-bs-toggle="dropdown">
+              Offerwalls
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="http://localhost:8000/task">OOFD</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8000/complete-task">Daily-Task</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost:8000/referral">Referrals</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost:8000/withdrawal">Withdraw</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost:8000/profile">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost:8000/contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<% if (!user.isVerified) { %>
+  <div style="padding: 10px; background-color: #ffdddd; color: #a94442; border: 1px solid #ebccd1;">
+    Your account is not verified. Please verify to unlock full access.
+    <form action="/send-otp" method="POST" style="margin-top: 10px;">
+      <button type="submit">Verify Your Account</button>
+    </form>
+  </div>
+<% }%>
+
+<div class="container py-5">
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="card p-3 text-center">
+        <h5>Username</h5>
+        <p class="text-muted" id="dash-username"><%= user.name %>!</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3 text-center">
+        <h5>Balance</h5>
+        <p class="text-muted"><%= user.balance.toFixed(4) %> USDT</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3 text-center">
+        <h5>Total Earned</h5>
+        <p class="text-muted"><%= user.totalEarned %> USDT</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3 text-center">
+        <h5>Referrals</h5>
+        <p class="text-muted"><%= user.referralCount %></p>
+      </div>
+    </div>
+  </div>
+
+  <h5>Progress</h5>
+  <div class="progress mb-4">
+    <div class="level" id="level-display">Level:<%=user.level %></div>
+    <div class="progress-bar" id="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><span class="progress-bar"><%=user.progress%>%</span></div>
+  </div>
+
+   <!-- Recent Transactions -->
+   <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card p-3">
+        <h5>Recent Activities</h5>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>N/A</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <% if (recentReferrals.length> 0) { %>
+            <% recentReferrals.forEach(ref=> { %>
+              <tr>
+                <td>
+                  <%= ref.name %>
+                </td>
+                <td>
+                  join on
+                </td>
+                <td>
+                  <%= new Date(ref.createdAt).toLocaleDateString() %>
+                </td>
+              </tr>
+              <%})%>
+                <%} else { %>
+                  <td>No recent Referrals</td>
+                  <%} %>
+        </tbody>
+          <tbody>
+            <% if (recentWithdrawals.length> 0) { %>
+              <% recentWithdrawals.forEach(withdrawal=> { %>
+                <tr>
+                  <td>
+                    <%= withdrawal.amount %>
+                  </td>
+                  <td>
+                    <%= withdrawal.status %>
+                  </td>
+                  <td>
+                    <%= new Date(withdrawal.createdAt).toLocaleDateString() %>
+                  </td>
+                </tr>
+                <%})%>
+                  <%} else { %>
+                    <td>No recent withdrawals</td>
+                    <%} %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  setInterval(() => {
+     fetch('/get-progress')
+       .then(response => response.json())
+       .then(data => {
+         document.getElementById("progress-bar").style.width = data.progress + "%";
+         document.getElementById("progress-text").innerText = data.progress;
+       });
+   }, 5000); // Refresh every 5 seconds
+</script>
+</body>
+</html>
+

@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "axios": "^1.9.0",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "googleapis": "^150.0.1",
+    "json2csv": "^6.0.0-alpha.2",
+    "jsonwebtoken": "^9.0.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.15.2",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^7.0.3"
+  },
+  "name": "fucet-ejs2",
+  "version": "1.0.0",
+  "main": "admin.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

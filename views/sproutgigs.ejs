@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SproutGigs Jobs & Gigs</title>
+</head>
+<body>
+  <h1>SproutGigs Jobs</h1>
+  <ul>
+    <% if (jobs && jobs.length > 0) { %>
+      <% jobs.forEach(job => { %>
+        <li><%= job.name %></li>
+      <% }) %>
+    <% } else { %>
+      <li>No jobs available</li>
+    <% } %>
+  </ul>
+
+  <h1>SproutGigs Gigs</h1>
+  <ul>
+    <% if (gigs && gigs.length > 0) { %>
+      <% gigs.forEach(gig => { %>
+        <li>
+          <strong><%= gig.title %></strong><br>
+          Price: <%= gig.price %><br>
+          Category: <%= gig.category %>
+        </li>
+      <% }) %>
+    <% } else { %>
+      <li>No gigs available</li>
+    <% } %>
+  </ul>
+</body>
+</html>

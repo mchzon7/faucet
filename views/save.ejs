@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paid-to-Click</title>
+  <script>
+    function startTimer(linkId, rewardLink) {
+      // Get timer display element
+      const timerDisplay = document.getElementById("timer");
+      const timerButton = document.getElementById(`visitLink-${linkId}`);
+      timerButton.disabled = true; // Disable the button after clicking
+
+      let timeLeft = 10; // Timer duration in seconds
+      timerDisplay.style.display = "block"; // Show timer
+      timerDisplay.innerHTML =` Please wait ${timeLeft} seconds...`;
+
+      const countdown = setInterval(() => {
+        timeLeft--;
+        timerDisplay.innerHTML =` Please wait ${timeLeft} seconds...`;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdown); // Stop the timer
+          timerDisplay.innerHTML = "Timer completed! Redirecting...";
+
+          // Redirect to reward link after timer finishes
+          window.location.href = rewardLink;
+        }
+      }, 1000); // Update every second
+    }
+  </script>
+</head>
+<body>
+  <!-- Display username and balance -->
+  <h1>Welcome, <%= user.username %>!</h1>
+  <p>Your balance: $<%= user.balance.toFixed(2) %></p>
+
+  <!-- Display Flash Messages -->
+  <% if (success_msg) { %>
+    <p style="color: green;"><%= success_msg %></p>
+  <% } %>
+  <% if (error_msg) { %>
+    <p style="color: red;"><%= error_msg %></p>
+  <% } %>
+
+  <h2>Paid-to-Click Tasks</h2>
+  <% if (links.length > 0) { %>
+    <ul>
+      <% links.forEach((link) => { %>
+        <li>
+          <button id="visitLink-<%= link._id %>" 
+                  onclick="startTimer('<%= link._id %>', '/ptc/<%= link._id %>')">
+            Visit Link - Earn $<%= link.reward.toFixed(2) %>
+          </button>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No tasks available. Please check back later.</p>
+  <% } %>
+
+  <!-- Timer Display -->
+  <p id="timer" style="color: red; font-weight: bold; display: none;"></p>
+</body>
+</html>
+
+
+setTimeout(async () => {
+  // Verify the 10-second rule
+  const timeNow = Date.now();
+  if (timeNow - visitTime >= 10000) {
+    // Reward the user and save to the database
+    user.clickedLinks.push(linkId);
+    user.balance += link.reward; // e.g., $0.05
+    await user.save();
+
+    req.flash("success_msg",` You earned $${link.reward.toFixed(2)} for visiting the link!`);
+    req.session.user = user;
+  } else {
+    req.flash("error_msg", "You did not wait for 10 seconds. No reward added.");
+    res.redirect("/ptc");
+  }
+}, 10000); // 10-second delay
+
+
+
+<h1>Paid-to-Click Tasks</h1>
+<h1>Welcome, <%= user.username %>!</h1>
+  <p>Your balance: $<%= user.balance.toFixed(2) %></p>
+
+<% if (success_msg) { %>
+  <p style="color: green;"><%= success_msg %></p>
+<% } %>
+<% if (error_msg) { %>
+  <p style="color: red;"><%= error_msg %></p>
+<% } %>
+<% if (links.length > 0) { %>
+  <ul>
+    <% links.forEach((link) => { %>
+      <li>
+        <a href="/ptc/<%= link._id %>" target="_blank">Visit Link - Earn $<%= link.reward.toFixed(2) %></a>
+      </li>
+    <% }); %>
+  </ul>
+<% } else { %>
+  <p>No tasks available. Please check back later.</p>
+<% } %>
+
+<!-- Display Success or Error Messages -->
+<% if (success_msg) { %>
+  <p style="color: green;"><%= message %></p>
+<% } %>
+<% if (error_msg) { %>
+  <p style="color: red;"><%= error %></p>
+<% } %>
+
+<!-- Add link manually -->
+
+(async () => {
+  await Link.create([
+      {url: "https://www.youtube.com/", reward: 0.05}
+  ]);
+  console.log("Link added");
+})();
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paid-to-Click</title>
+  <script>
+    function startTimer(linkId, rewardLink) {
+      // Get timer display element
+      const timerDisplay = document.getElementById("timer");
+      const timerButton = document.getElementById(`visitLink-${linkId}`);
+      timerButton.disabled = true; // Disable the button after clicking
+
+      let timeLeft = 10; // Timer duration in seconds
+      timerDisplay.style.display = "block"; // Show timer
+      timerDisplay.innerHTML =` Please wait ${timeLeft} seconds...`;
+
+      const countdown = setInterval(() => {
+        timeLeft--;
+        timerDisplay.innerHTML =` Please wait ${timeLeft} seconds...`;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdown); // Stop the timer
+          timerDisplay.innerHTML = "Timer completed! Redirecting...";
+
+          // Redirect to reward link after timer finishes
+          window.open(rewardLink, "_blank")
+        }
+      }, 1000); // Update every second
+    }
+  </script>
+</head>
+<body>
+  <!-- Display username and balance -->
+  <h1>Welcome, <%= user.username %>!</h1>
+  <p>Your balance: $<%= user.balance.toFixed(2) %></p>
+
+  <!-- Display Flash Messages -->
+  <% if (success_msg) { %>
+    <p style="color: green;"><%= success_msg %></p>
+  <% } %>
+  <% if (error_msg) { %>
+    <p style="color: red;"><%= error_msg %></p>
+  <% } %>
+
+  <h2>Paid-to-Click Tasks</h2>
+  <% if (links.length > 0) { %>
+    <ul>
+      <<% links.forEach(link => { %>
+        <div class="link-box">
+          <h3><%= link.name %></h3> <!-- Display description -->
+          <p><%= link.description %></p>
+          
+          <button id="visitLink-<%= link._id %>" 
+            onclick="startTimer('<%= link._id %>', '/ptc/<%= link._id %>')">
+      Visit Link - Earn $<%= link.reward.toFixed(2) %>
+    </button>
+        </div>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No tasks available. Please check back later.</p>
+  <% } %>
+
+  <!-- Timer Display -->
+  <p id="timer" style="color: red; font-weight: bold; display: none;"></p>
+</body>
+</html>
+
+<!-- PTC ROUTH-->
+
+fetch("/reward-user", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ linkId: linkId, visitedUrl: url })
+})
+.then(response => response.json())
+.then(data => {
+  if (data.success) {
+    alert("You have been rewarded!");
+    window.location.reload(); // Refresh balance
+  } else {
+    alert("Error: " + data.message);
+  }
+});
+
+<!-- timewall routh -->
+
+router.get("/timewall", async (req, res) => {
+  if (!req.session.userId) return res.redirect("/login");
+
+  const user = await User.findById(req.session.userId);
+  if (!user) return res.redirect("/login");
+
+  res.render("timewall", { user });
+});
+
+// website callback: https://yourwebsite.com/api/timewall-callback
+// http://localhost:8000/timewall-callback?userId={userId}
+
+router.post("/timewall-callback", async (req, res) => {
+  const { userId, transactionId, amount, signature } = req.body;
+
+  if (!userId ||  !transactionId || !amount || !signature) {
+    return res.status(400).json({ success: false, message: "Invalid request" });
+  }
+
+  // Verify the signature to ensure the request is authentic
+  const SECRET_KEY = "f3e921725f8b3fae81cfc7001966d172";
+  const calculatedSignature = crypto.createHash("sha256").update(userId + transactionId + amount + SECRET_KEY).digest("hex");
+
+  if (calculatedSignature !== signature) {
+    return res.status(403).json({ success: false, message: "Invalid signature" });
+  }
+
+  // Update user's balance
+  try {
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+
+    user.balance += parseFloat(amount);
+    await user.save();
+
+    res.json({ success: true, message: "Balance updated successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
+
+
+
+<!-- Pagination Controls -->
+<div class="pagination">
+  <% if (currentPage > 1) { %>
+    <a href="/ptc?page=<%= currentPage - 1 %>">Previous</a>
+  <% } %>
+
+  <% for (let i = 1; i <= totalPages; i++) { %>
+    <% if (i === currentPage) { %>
+      <span><strong><%= i %></strong></span>
+    <% } else { %>
+      <a href="/ptc?page=<%= i %>"><%= i %></a>
+    <% } %>
+  <% } %>
+
+  <% if (currentPage < totalPages) { %>
+    <a href="/ptc?page=<%= currentPage + 1 %>">Next</a>
+  <% } %>
+</div>
+
+<style>
+.pagination {
+  margin-top: 20px;
+}
+.pagination a, .pagination span {
+  margin: 0 5px;
+  text-decoration: none;
+}
+</style>
+
+
+// check if user alredy exist
+        const checkUser = await User.findOne({username});
+        if(checkUser){
+          req.flash('error_msg', 'user already exist');
+          return res.redirect('/register');
+        }
+
+        const protex = new User({username, password: hashPassword, walletAddress, balance: 0, referrer: referralCode || null, referralCount: 0});
+        await protex.save();
+
+        // if referred by someone, update their referral count and earning
+        if(referralCode){
+          const referrer = await User.findOne({username: referrer});
+          if(referrer){
+            referrer.referrer += 1;
+            await referral.save();
+          }
+        }
+
+        req.flash('success_msg', 'Registration successful. please log in.');
+        res.redirect('/login');
+
+
+        //another
+
+        // check if the referral code (username) exists
+        let referrer = null;
+        if(referralCode){
+            const protex = User;
+            referrer = await protex.findOne({username: referralCode});
+            if(!referrer){
+                return res.send("Invalid referral code.");
+            }
+        }
+        const protex = new User({username, password:hashPassword, walletAddress, balance: 0, referrer: referrer ? referrer._id: null});
+        await protex.save();
+
+        if(referrer){
+            referrer.referralCount += 1;
+            await referrer.save();
+        }
+        res.redirect('/login');
+
+
+        const captchaText = Math.random().toString(36).substring(2, 8);
+        req.session.captcha = captchaText;
+        res.render('typingCaptcha2', {user: req.session.user, captchaText});
+
+        req.session.captcha && req.session.captcha.toLowerCase() === captchaInput.toLowerCase()

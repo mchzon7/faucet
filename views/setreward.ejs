@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reward Settings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ECF0F1;
+    }
+    .navbar {
+      background-color: #2C3E50;
+    }
+    .navbar .nav-link, .navbar-brand {
+      color: #ECF0F1 !important;
+    }
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+      background-color: #2C3E50;
+      color: #ECF0F1;
+    }
+    .btn-primary {
+      background-color: #3498DB;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #2980B9;
+    }
+    .table th {
+      background-color: #BDC3C7;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CRASHCASH-Admin</a>
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon bg-white"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/admin/dashboard">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/all-users">ManageUsers</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="faucetDropdown" role="button" data-bs-toggle="dropdown">
+              ADD-OPTIONS
+            </a>
+            <ul class="dropdown-menu">
+            <li ><a class="dropdown-item" href="/addlinks">Add-Task</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8000/admin/banner-ads">Banner-ADS</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8000/rewards">Reward-controls</a></li>
+            </ul>
+          </li>
+        <li class="nav-item"><a class="nav-link" href="/getlinks">Link-Task</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin/ip-logs">IP-logs</a></li>
+        <li class="nav-item"><a class="nav-link" href="/submitted-data">OOFD-SUBMIT</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sendmailusers">SendMessage</a></li>
+        <li class="nav-item"><a class="nav-link" href="/recent-transactions">RecentTrx</a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="container mt-5">
+    <h2>Reward Control Panel</h2>
+    <form method="POST" action="/rewards">
+      <div class="mb-3">
+        <label>Rname (USD)</label>
+        <input type="text" name="Rname" class="form-control" value="<%= settings.Rname %>">
+      </div>
+      <div class="mb-3">
+        <label>Reward (USD)</label>
+        <input type="number" step="0.00001" name="reward" class="form-control" value="<%= settings.reward %>">
+      </div>
+      <div class="mb-3">
+        <label>Visit-Referral-reward (USD)</label>
+        <input type="number" step="0.00001" name="visitreward" class="form-control" value="<%= settings.visitreward %>">
+      </div>
+      <div class="mb-3">
+        <label>oofdreward(USD)</label>
+        <input type="number" step="0.00001" name="oofdreward" class="form-control" value="<%= settings.oofdreward %>">
+      </div>
+      <div class="mb-3">
+        <label>dailyofferreward(USD)</label>
+        <input type="number" step="0.00001" name="dailyofferreward" class="form-control" value="<%= settings.dailyofferreward %>">
+      </div>
+      <div class="mb-3">
+        <label>visit10sitereward(USD)</label>
+        <input type="number" step="0.00001" name="visit10sitereward" class="form-control" value="<%= settings.visit10sitereward %>">
+      </div>
+      <div class="mb-3">
+        <label>Referral Reward (USD)</label>
+        <input type="number" step="0.00001" name="referralReward" class="form-control" value="<%= settings.referralReward %>">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Rewards</button>
+    </form>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

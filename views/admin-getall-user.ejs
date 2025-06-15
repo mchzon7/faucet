@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - All Users</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #ECF0F1;
+    }
+    .navbar {
+      background-color: #2C3E50;
+    }
+    .navbar .nav-link, .navbar-brand {
+      color: #ECF0F1 !important;
+    }
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+      background-color: #2C3E50;
+      color: #ECF0F1;
+    }
+    .btn-primary {
+      background-color: #3498DB;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #2980B9;
+    }
+    .table th {
+      background-color: #BDC3C7;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CRASHCASH-Admin</a>
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon bg-white"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/admin/dashboard">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/all-users">ManageUsers</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="faucetDropdown" role="button" data-bs-toggle="dropdown">
+              ADD-OPTIONS
+            </a>
+            <ul class="dropdown-menu">
+            <li ><a class="dropdown-item" href="/addlinks">Add-Task</a></li>
+              <li><a class="dropdown-item" href="http://localhost:8000/admin/banner-ads">Banner-ADS</a></li>
+              <li><a class="dropdown-item" href="#">Daily-Task</a></li>
+            </ul>
+          </li>
+        <li class="nav-item"><a class="nav-link" href="/getlinks">Link-Task</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin/ip-logs">IP-logs</a></li>
+        <li class="nav-item"><a class="nav-link" href="/submitted-data">OOFD-SUBMIT</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sendmailusers">SendMessage</a></li>
+        <li class="nav-item"><a class="nav-link" href="/recent-transactions">RecentTrx</a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="container mt-5">
+    <h2 class="mb-3">All Registered Users</h2>
+
+    <form method="GET" action="/all-users" class="d-flex mb-3">
+      <input type="text" name="search" value="<%= search %>" class="form-control me-2" placeholder="Search by name or email" />
+      <button class="btn btn-primary">Search</button>
+    </form>
+
+    <p>Total Users: <strong><%= users.length %></strong></p>
+
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Verified</th>
+          <th>Referrer</th>
+          <th>Blocked</th>
+          <th>Registration Date</th>
+          <th>Balance</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (users.length===0) { %>
+          <tr>
+            <td colspan="5">No users found.</td>
+          </tr>
+          <% } else { %>
+            <% users.forEach(user=> { %>
+              <tr>
+                <td>
+                  <%= user.name %>
+                </td>
+                <td>
+                  <%= user.email %>
+                </td>
+                <td>
+                  <%= user.isVerified ? 'Yes' : 'No' %>
+                </td>
+                <td>
+                  <%= user.referrer || 'N/A' %>
+                </td>
+                <td>
+                  <%= user.isBlocked ? 'Yes' : 'No' %>
+                </td>
+                <td>
+                  <%= new Date(user.createdAt).toLocaleString() %>
+                </td>
+                <td>
+                  <%= user.balance.toFixed(4) %> USDT
+                </td>
+                <td>
+                  <form method="POST" action="/block-user/<%= user._id %>" style="display:inline;"
+                    onsubmit="return confirm('Are you sure you want to toggle block status?');">
+                    <button type="submit">
+                      <%= user.isBlocked ? 'Unblock' : 'Block' %>
+                    </button>
+                  </form>
+                  <form method="POST" action="/delete-user/<%= user._id %>?_method=DELETE" style="display:inline;"
+                    onsubmit="return confirm('Are you sure you want to delete this user?');">
+                    <button type="submit">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+                <% } %>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <nav>
+      <ul class="pagination">
+        <% for (let i = 1; i <= totalPages; i++) { %>
+          <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+            <a class="page-link" href="/all-users?page=<%= i %>&search=<%= search %>"><%= i %></a>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+
+    <!-- Export Buttons -->
+    <div class="mt-4">
+      <a href="/all-users?format=json" class="btn btn-secondary me-2">Download JSON</a>
+      <a href="/all-users?format=csv" class="btn btn-secondary">Download CSV</a>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

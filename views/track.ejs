@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracking Link...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #iframe-container {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      margin-top: 20px;
+    }
+    #timer {
+      font-size: 20px;
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Wait for <span id="timer">10</span> seconds to get rewarded.</h2>
+
+  <!-- Display the website in an iframe -->
+  <iframe id="iframe-container" src="<%= url %>" sandbox="allow-scripts allow-same-origin"></iframe>
+
+  <script>
+    let timeLeft = 10;
+    const timerElement = document.getElementById("timer");
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timerElement.innerText = timeLeft;
+
+      if (timeLeft <= 0) {
+        window.location.href="/ptc3";
+        clearInterval(countdown);
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>

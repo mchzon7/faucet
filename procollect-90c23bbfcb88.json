@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "procollect",
+  "private_key_id": "90c23bbfcb88153fb500de102be2fe228944e455",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLozpY/cR53h9+\nk1RbkkhLS/SjOfDDNiqFx59SjdTLmQG3ipezDkMepvUECNYnTIkLWi4waAxQTeuA\nWOLIWG/rwFq19F8hdSLLYGq2ZunOXyJKWvr4qGbinBKNL9/mEmKPxMCI96uWVYmD\nvXrV40dYYiTwJ08XGkaim9Myf9Ihdt/nEMnzHbpf+/Qb21orL//mvoX+cn/XzDcX\nLf7MUVZqssheylkOCH34v0cnAaiZoGP6WPJwQYm/mahqWyyFVjMbMQmvANjW9tUR\nlQz7t3IH6wQf2YIZ/pBs+7Ii6qnwgnSW8gRdgpqY0K4zWjm4iVhqdXiaCzRbS0n0\nBf1I551lAgMBAAECggEAG4Z4PBAtLxXdpvPOKsSGnhrpueh6iUB4lfWqLPP75/tK\nFp+Wqr7KRsnlg4KYQ96eBZlOdf+SboZhx0r8eH0vv6uT91VNSI33QotJUVdu0hTc\n4zUSCGtm4Mmc3lWyy3v/s5QyPDFSEbOFL3f8sw2SFrnJaWa+044bLx6l+QT7B8e2\ncgx39eJdRvPu+ZzVbUl+ZoCn6GJiQn20dRROugQA7FBS4zj86wkOkglntNj6PgmS\neIV74DYxiG2cAJkwPCOEriev3Z9tSKb1fcdtW36yzgfNLlWx2ix2J5MrfC8YWyBV\nXQf3PLgw+YtvLJAlrbYxY2JuVD/KCc03ozUfGXtSgQKBgQDrelvygzb9XJTRTs/t\nYzEudz2LUJmepA2u7gOCxqb50VcGQw2uooI3rPh/ycshd33unuy9Cdjhh48YbQP5\n9lJ8xMeFn9ggDreDtI5TVmLrsJMeRAvA1wB2KJ1tkQl/13oci7KYIb8cd6iYxgGE\nyNEtW7NCPLltyqmsBZKcj27yJQKBgQDdYn5AX3aFBvOK9yB2TMXwml+h8bUkZTwG\nwhrtlcbxw/ZrNVSY2U/PzufNlaHxLVLkf8sK//XoSLY1ePqGHC2FBEkepPZEZ4uB\nXzIvXgkEm50auZsIOftGhkbqd7WZLakuM8/otazfr17EssulD4MFOhVKTKuZaHCt\ntl12svT6QQKBgA33WOK+U5GdXxo28XAj9PPLkLPlmObm1gTtCvpDq/2fI+k0KuiT\nrON+d9Kkdk7K1oZDmMjxf5KIxrztIlI+ANBzn13WiCwGk23VVKeutPlDpMYjxQqv\n9dAMQqIP+x9A+XYd9v686afXlQFSpR5qBrYI/U3NajYP0hZo0jRE8ZCdAoGATA5R\nV2Y0foEj3EMIWPwJKJ6wah9y3t0UoTHANI03Osna93vr41MNE1R+2Gcmqoeqqaup\nos7KuZF5X6d/UeGOVdtiD3AW1utHxxtgT1ub94RKlerb8xiQVes9o8GaltRUAfZ0\n3/rCOFq0URkn0z4gAgSxWcQ7U8nIpDU5qNTUSsECgYEAx0I6Nm79L82elVdbDtU1\ndUxfb91v5pXRgc1O+b18C7ssMa9TER309KSpZcLsQ0Y48PUm5QetJ6MVniIF2tZ6\n3xJzQnMHrKhCnoW/bFTdbkp3/aIHUcDpaRv5iR3Q0B3QRLzNm8MAR1SNCiXuCW7x\naAczyPnWrY5l8snWfz6mW3M=\n-----END PRIVATE KEY-----\n",
+  "client_email": "procollect@procollect.iam.gserviceaccount.com",
+  "client_id": "116082514090248456795",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/procollect%40procollect.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
