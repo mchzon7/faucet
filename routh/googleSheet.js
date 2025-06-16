@@ -1,6 +1,6 @@
-
+require("dotenv").config();
 const {google} = require("googleapis");
-const keys = require("../procollect-90c23bbfcb88.json");
+const keys = require("../procollect-96d1f48940e6.json");
 
 const auth = new google.auth.GoogleAuth({
   credentials: keys,

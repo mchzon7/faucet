@@ -7,7 +7,8 @@ router.get("/typing-captcha", (req, res) => {
   if (req.session.user) {
     const captchaText = Math.random().toString(36).substring(2, 8);
     req.session.captcha = captchaText;
-    res.render("typingCaptcha2", {user: req.session.user, captchaText});
+    const user = req.session.user;
+    res.render("typingCaptcha2", {user, captchaText});
   } else {
     return res.redirect("/login");
   }

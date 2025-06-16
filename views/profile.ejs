@@ -43,10 +43,10 @@
               Faucet List
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="http://localhost:8000/">Solve-task</a></li>
-              <li><a class="dropdown-item" href="http://localhost:8000/typing-captcha">Type-task</a></li>
-              <li><a class="dropdown-item" href="http://localhost:8000/ptc3">V-ShortLinks</a></li>
-              <li><a class="dropdown-item" href="http://localhost:8000/page1">V-pages</a></li>
+              <li><a class="dropdown-item" href="/math">Solve-task</a></li>
+              <li><a class="dropdown-item" href="/typing-captcha">Type-task</a></li>
+              <li><a class="dropdown-item" href="/ptc3">V-ShortLinks</a></li>
+              <li><a class="dropdown-item" href="/page1">V-pages</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -54,14 +54,14 @@
               Offerwalls
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="http://localhost:8000/task">OOFD</a></li>
-              <li><a class="dropdown-item" href="http://localhost:8000/complete-task">Daily-Task</a></li>
+              <li><a class="dropdown-item" href="/task">OOFD</a></li>
+              <li><a class="dropdown-item" href="/complete-task">Daily-Task</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="http://localhost:8000/referral">Referrals</a></li>
-          <li class="nav-item"><a class="nav-link" href="http://localhost:8000/withdrawal">Withdraw</a></li>
-          <li class="nav-item"><a class="nav-link" href="http://localhost:8000/profile">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="http://localhost:8000/contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/referral">Referrals</a></li>
+          <li class="nav-item"><a class="nav-link" href="/withdrawal">Withdraw</a></li>
+          <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
           <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
         </ul>
       </div>
@@ -71,7 +71,7 @@
 
   <div class="container py-5">
     <div class="profile-card">
-      <h3 class="text-center text-primary mb-4">User Profile</h3>
+      <h3 class="text-center text-primary mb-4">Profile</h3>
       <div class="mb-3">
         <strong>Username:</strong>
         <span class="text-muted"><%=userProfile.name%></span>
@@ -86,7 +86,7 @@
       </div>
       <div class="mb-3">
         <strong>Referral Code:</strong>
-        <span class="text-muted">REF123456</span>
+        <span class="text-muted"><%=userProfile.username%></span>
       </div>
     </div>
   </div>

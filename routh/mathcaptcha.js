@@ -5,7 +5,7 @@ const Rcontrol = require("../models/Reward.model");
 const Transaction = require("../models/transaction");
 const BannerAD = require("../models/Banner.model");
 
-router.get("/", async (req, res) => {
+router.get("/math", async (req, res) => {
   if (req.session.user) {
     const banners = await BannerAD.find({ isActive: true });
     const a = Math.floor(Math.random() * 10);
@@ -22,7 +22,7 @@ router.post("/solve-captcha", async (req, res) => {
   const Rcheck = await Rcontrol.findOne({Rname: "control"});
   if (!Rcheck) {
     req.flash("error_msg", "Not Found");
-    return res.redirect("/");
+    return res.redirect("/math");
   }
   if (req.session.user && parseInt(answer) === req.session.captcha) {
     const user = await User.findById(req.session.user._id);
@@ -51,10 +51,10 @@ router.post("/solve-captcha", async (req, res) => {
     req.session.user.balance = user.balance;
     req.session.captcha = null;
     req.flash("success_msg", "Captcha solve correctly.");
-    res.redirect("/");
+    res.redirect("/math");
   } else {
     req.flash("error_msg", "Incorrect captcha. please try again.");
-    return res.redirect("/");
+    return res.redirect("/math");
   }
 });
 
