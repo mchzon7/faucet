@@ -12,15 +12,15 @@ router.get("/math", async (req, res) => {
     const a = Math.floor(Math.random() * 10);
     const b = Math.floor(Math.random() * 10);
     req.session.captcha = a + b;
-    res.render("math", {user: req.session.user, a, b, banners});
+    res.render("math", { user: req.session.user, a, b, banners });
   } else {
     res.redirect("/login");
   }
 });
 
 router.post("/solve-captcha", async (req, res) => {
-  const {answer} = req.body;
-  const Rcheck = await Rcontrol.findOne({Rname: "control"});
+  const { answer } = req.body;
+  const Rcheck = await Rcontrol.findOne({ Rname: "control" });
   const hCaptchaToken = req.body['h-captcha-response'];
   if (!Rcheck) {
     req.flash("error_msg", "Not Found");
@@ -33,12 +33,12 @@ router.post("/solve-captcha", async (req, res) => {
   }
 
   const secretKey = process.env.hcaptcha;
-  const verifyResponse =  await axios.post(
-      `https://hcaptcha.com/siteverify?secret=${secretKey}&response=${hCaptchaToken}`);
+  const verifyResponse = await axios.post(
+    `https://hcaptcha.com/siteverify?secret=${secretKey}&response=${hCaptchaToken}`);
   const hCaptchaSuccess = verifyResponse.data.success;
   if (!hCaptchaSuccess) {
-      req.flash('error', 'hCaptcha verification failed.');
-      return res.redirect('/math');
+    req.flash('error_msg', 'hCaptcha verification failed.');
+    return res.redirect('/math');
   }
 
   if (req.session.user && parseInt(answer) === req.session.captcha) {
