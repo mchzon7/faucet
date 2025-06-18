@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user.model");
 const Transaction = require("../models/transaction");
+const checkblock = require('./checkblockuser');
 
 
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard",checkblock, async (req, res) => {
   if (!req.session.user) {
     return res.redirect("/login");
   }
