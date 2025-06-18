@@ -99,7 +99,7 @@
         <div class="card p-3">
             <h5>Your Referral Link</h5>
             <div class="input-group">
-                <input type="text" id="referralLink" class="form-control" value="<%= `/register?ref=${user.name}`%>" readonly>
+                <input type="text" id="referralLink" class="form-control" value="<%= `https://faucet-crashcash.onrender.com/register?ref=${user.name}`%>" readonly>
                 <button class="btn btn-primary copy-btn" onclick="copyReferralLink()">Copy</button>
             </div>
         </div>
@@ -115,14 +115,16 @@
               <table class="table table-striped">
                   <thead>
                     <tr>
+                      <th>#</th>
                       <th>Name</th>
                       <th>Date</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <% recentReferrals.forEach(ref => { %>
+                    <% recentReferrals.forEach((ref, index) => { %>
                       <tr>
-                        <td><%= ref.name %> - Joined on</td>
+                        <td><%= index + 1 %></td>
+                        <td><%= ref.name %></td>
                         <td><%= new Date(ref.createdAt).toLocaleDateString() %></td>
                       </tr>
                     <% }); %>

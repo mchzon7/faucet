@@ -3,6 +3,9 @@ const router = express.Router();
 const User = require("../models/user.model");
 const Rcontrol = require("../models/Reward.model");
 const Transaction = require("../models/transaction");
+const verifyCaptcha = require('./passChaptcha');
+
+
 router.get("/typing-captcha", (req, res) => {
   if (req.session.user) {
     const captchaText = Math.random().toString(36).substring(2, 8);
@@ -14,7 +17,7 @@ router.get("/typing-captcha", (req, res) => {
   }
 });
 
-router.post("/typing-captcha", async (req, res) => {
+router.post("/typing-captcha", verifyCaptcha, async (req, res) => {
   const {captchaInput} = req.body;
   const captchaText = req.session.captcha;
   const Rcheck = await Rcontrol.findOne({Rname: "control"});

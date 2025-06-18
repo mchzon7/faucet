@@ -135,16 +135,19 @@
                     <%= error_msg %>
                   </div>
                   <% } %>
-            <div class="">
-              <p>Your balance: <%= user.balance.toFixed(4) %> USDT</p>
-            </div>
-            <div class="d-flex justify-content-between">
-              <span>Solve: <%= a %> + <%= b %></span>
-            </div>
-            <input type="number" class="form-control mt-2" name="answer" placeholder="Your answer" required>
+                    <div class="">
+                      <p>Your balance: <%= user.balance.toFixed(4) %> USDT</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <span>Solve: <%= a %> + <%= b %></span>
+                    </div>
+                    <input type="number" class="form-control mt-2" name="answer" placeholder="Your answer" required>
           </div>
           <!-- hCaptcha widget -->
-          <div class="h-captcha" data-sitekey="f9bcfb56-f2ba-4c22-989c-dde2cf46492a"></div>
+            <div class="h-captcha" data-sitekey="f9bcfb56-f2ba-4c22-989c-dde2cf46492a"></div>
+        
+          <!-- Load hCaptcha script -->
+          <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
           <button type="submit" class="btn btn-primary w-100">Submit Answer</button>
         </form>
       </div>
