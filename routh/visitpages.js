@@ -3,8 +3,9 @@ const router = express.Router();
 const User = require("../models/user.model");
 const Rcontrol = require("../models/Reward.model");
 const BannerAD = require("../models/Banner.model");
+const isBlocked = require('./checkblockuser');
 
-router.get("/page1", isAuthenticated, async (req, res) => {
+router.get("/page1", isBlocked, isAuthenticated, async (req, res) => {
   const userId = req.session.user;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({isActive: true});

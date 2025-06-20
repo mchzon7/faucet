@@ -5,8 +5,9 @@ const User = require("../models/user.model");
 const Rcontrol = require("../models/Reward.model");
 const Transaction = require("../models/transaction");
 const BannerAD = require("../models/Banner.model");
+const isBlocked = require('./checkblockuser');
 
-router.get("/math", async (req, res) => {
+router.get("/math", isBlocked, async (req, res) => {
   if (req.session.user) {
     const banners = await BannerAD.find({ isActive: true });
     const a = Math.floor(Math.random() * 10);

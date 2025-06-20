@@ -4,9 +4,10 @@ const User = require("../models/user.model");
 const Rcontrol = require("../models/Reward.model");
 const Transaction = require("../models/transaction");
 const verifyCaptcha = require('./passChaptcha');
+const isBlocked = require('./checkblockuser');
 
 
-router.get("/typing-captcha", (req, res) => {
+router.get("/typing-captcha", isBlocked, (req, res) => {
   if (req.session.user) {
     const captchaText = Math.random().toString(36).substring(2, 8);
     req.session.captcha = captchaText;

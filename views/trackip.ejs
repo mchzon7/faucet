@@ -94,7 +94,8 @@
                     <% } %>
             </div>
             <div class="">
-              <p>Your balance: <%= user.balance.toFixed(4) %> USDT</p>
+              <h6>Your Balance: <span id="balance" class="fw-bold text-success" ><p><%= user.balance.toFixed(4) %> CRC-Coin</p></span></h6>
+              <h3>Earn 0.05 CRC-Coin</h3>
             </div>
           <button class="btn btn-primary w-100" type="submit" <%= taskLocked ? 'disabled' : '' %>>Start-offer</button>
         </form>

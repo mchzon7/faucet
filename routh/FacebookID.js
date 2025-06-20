@@ -5,8 +5,9 @@ const taskschema = require("../models/taskschema");
 const router = express.Router();
 const GOOGLE_SHEET_WEBHOOK = process.env.GOOGLE_SHEET_WEBHOOK;
 const fs = require("fs");
+const isBlocked = require('./checkblockuser');
 
-router.get("/task", (req, res) => {
+router.get("/task", isBlocked, (req, res) => {
     if (!req.session.user) {
         return res.redirect("/login");
     }

@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Transaction = require("../models/transaction");
 const User = require("../models/user.model");
+const isBlocked = require('./checkblockuser');
 
 // Withdrawal Routh
-router.get("/withdrawal", (req, res) => {
+router.get("/withdrawal", isBlocked, (req, res) => {
   if (!req.session.user) {
     req.flash("error_msg", "please login");
     return res.redirect("/login");
@@ -50,7 +51,7 @@ router.post("/withdraw", async (req, res) => {
       const user = await User.findById(userId);
       const apiKey = process.env.WithdrawKey;
       const to = wallet;
-      const amonn = amount;
+      const amonn = parseInt(amount * 2);
       const currency = "FEY";
 
       const data = new URLSearchParams();

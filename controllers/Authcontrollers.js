@@ -58,12 +58,6 @@ router.get("/login", (req, res) => res.render("login"));
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
-    let checkBlock = await User.findOne({ email });
-    if (checkBlock.isBlocked == true) {
-        req.flash("error_msg", "Your account has been blocked please contact the support");
-        return res.redirect("/login");
-    }
-
     const protex = await User.findOne({ email });
     if (protex && (await bcrypt.compare(password, protex.password))) {
         req.session.user = protex;

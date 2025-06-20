@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user.model");
+const isBlocked = require('./checkblockuser');
 
-router.get("/profile", async (req, res) => {
+router.get("/profile", isBlocked, async (req, res) => {
   if (!req.session.user) {
     return res.redirect("/login");
   }

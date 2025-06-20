@@ -77,7 +77,7 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="captcha-card shadow-sm">
-        <h4 class="mb-4 text-center">Typing Captcha</h4>
+        <h4 class="mb-4 text-center">Type Captcha</h4>
         <form action="/typing-captcha" method="POST">
           <div class="mb-3">
             <div class="d-flex justify-content-center">
@@ -94,7 +94,7 @@
                     <% } %>
             </div>
             <div class="">
-              <p>Your balance: <%= user.balance.toFixed(4) %> USDT</p>
+              <h6>Your Balance: <span id="balance" class="fw-bold text-success" ><p><%= user.balance.toFixed(4) %> CRC-Coin</p></span></h6>
             </div>
             <div class="">
               <p>Solve this: <strong><%=captchaText %></strong></p>

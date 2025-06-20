@@ -4,10 +4,11 @@ const Link = require("../models/link.model");
 const User = require("../models/user.model");
 const Rcontrol = require("../models/Reward.model");
 const Transaction = require("../models/transaction");
+const isBlocked = require('./checkblockuser');
 
 const ITEMS_PER_PAGE = 10;
 
-router.get("/ptc3", async (req, res) => {
+router.get("/ptc3", isBlocked, async (req, res) => {
   const page = parseInt(req.query.page) || 1;
 
   try {
