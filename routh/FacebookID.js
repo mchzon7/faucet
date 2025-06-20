@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const taskschema = require("../models/taskschema");
 const router = express.Router();
-const googlesheet = require("./googleSheet");
+const GOOGLE_SHEET_WEBHOOK = process.env.GOOGLE_SHEET_WEBHOOK;
 const fs = require("fs");
 
 router.get("/task", (req, res) => {
@@ -37,7 +37,7 @@ router.post("/task", async (req, res) => {
     // save to database
     const user = new taskschema({ userId, faId, email, password, fa });
     await user.save();
-    await googlesheet([faId, email, password, fa, Datt]);
+    await axios.post(GOOGLE_SHEET_WEBHOOK, { faId, email, password, fa, Datt });
 
     req.flash("success_msg", "Your work has submitted successfully...");
     res.redirect("/task");
