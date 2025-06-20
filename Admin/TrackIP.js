@@ -21,7 +21,7 @@ router.get("/complete-task", async (req, res) => {
   res.render("trackip", { taskLocked: !!existing, user });
 });
 
-router.post("/complete-task", (req, res) => res.redirect("/reward-task"));
+router.post("/complete-task", (req, res) => res.redirect("https://trianglerockers.com/1818637"));
 
 // Route to handle task click
 router.get("/reward-task", async (req, res) => {
