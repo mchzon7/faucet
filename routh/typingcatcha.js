@@ -4,15 +4,17 @@ const User = require("../models/user.model");
 const Rcontrol = require("../models/Reward.model");
 const Transaction = require("../models/transaction");
 const verifyCaptcha = require('./passChaptcha');
+const BannerAD = require("../models/Banner.model");
 const isBlocked = require('./checkblockuser');
 
 
-router.get("/typing-captcha", isBlocked, (req, res) => {
+router.get("/typing-captcha", isBlocked, async (req, res) => {
   if (req.session.user) {
     const captchaText = Math.random().toString(36).substring(2, 8);
+    const banners = await BannerAD.find({ isActive: true });
     req.session.captcha = captchaText;
     const user = req.session.user;
-    res.render("typingCaptcha2", {user, captchaText});
+    res.render("typingCaptcha2", {user, captchaText,banners});
   } else {
     return res.redirect("/login");
   }
