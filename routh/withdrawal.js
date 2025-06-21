@@ -51,8 +51,8 @@ router.post("/withdraw", async (req, res) => {
       const user = await User.findById(userId);
       const apiKey = process.env.WithdrawKey;
       const to = wallet;
-      const amonn = parseInt(amount * 2);
-      const currency = "FEY";
+      const amonn = parseInt(amount * 100000000);
+      const currency = "DOGE";
 
       const data = new URLSearchParams();
       data.append("api_key", apiKey);
