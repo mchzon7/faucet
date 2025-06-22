@@ -7,6 +7,9 @@ const transpoter = require("./nodemailer");
 const crypto = require("crypto");
 const router = express.Router();
 
+
+router.get("/", (req, res)=> res.redirect('/login'));
+
 router.get("/register", (req, res) => {
     const referralCode = req.query.ref || null; // capture referral code from string
     res.render("register", { referralCode });
@@ -94,7 +97,7 @@ router.post("/forgot-password", async (req, res) => {
     user.resetPasswordExpAt = Date.now() + 3600000;
     await user.save();
 
-    const resetLink = `reset-password/${token}`;
+    const resetLink = `https://faucet-crashcash.onrender.com/reset-password/${token}`;
 
     await transpoter.sendMail({
         from: process.env.SENDER_EMAIL,
