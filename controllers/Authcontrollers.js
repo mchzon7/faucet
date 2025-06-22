@@ -94,7 +94,7 @@ router.post("/forgot-password", async (req, res) => {
     user.resetPasswordExpAt = Date.now() + 3600000;
     await user.save();
 
-    const resetLink = `http://localhost:8000/reset-password/${token}`;
+    const resetLink = `/reset-password/${token}`;
 
     await transpoter.sendMail({
         from: process.env.SENDER_EMAIL,

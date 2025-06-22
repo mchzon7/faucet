@@ -30,7 +30,8 @@ router.post("/send-otp", async (req, res) => {
       from: process.env.SENDER_EMAIL,
       to: user.email,
       subject: "Your Verification OTP",
-      text: `Your OTP is: ${otp}`
+      html: `<p>Your OTP is: ${otp}</p>
+      it will expires after 10min <br>`
     });
     req.flash("success_msg", "OTP has been sent to your email");
     res.redirect("/verify");
