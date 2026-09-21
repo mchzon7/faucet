@@ -1,61 +1,262 @@
-<!-- Login Page -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Faucet Platform</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #ECF0F1;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .btn-primary {
-      background-color: #3498DB;
-      border: none;
-    }
-    .btn-primary:hover {
-      background-color: #2C3E50;
-    }
-    .form-container {
-      max-width: 400px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 30px;
-      margin-top: 80px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container d-flex justify-content-center align-items-center">
-    <div class="form-container">
-      <h3 class="text-center text-primary">ADMIN</h3>
-      <!-- Display flash messages -->
-      <% if (success_msg) { %>
-        <div style="color: green;">
-          <%= success_msg %>
-        </div>
-        <% } %>
-          <% if (error_msg) { %>
-            <div style="color: red;">
-              <%= error_msg %>
-            </div>
-            <% } %>
-      <form action="/admin/login" method="POST" >
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" name="username" placeholder="username" required />
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" name="password" placeholder="Password" required />
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
-        <p class="text-center mt-3">Swith to User <a href="/login">User Log</a></p>
-      </form>
+<html
+  lang="en"
+  class="light-style customizer-hide"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title><%= title ? title : appName %></title>
+
+    <meta name="description" content="" />
+
+    <link rel="icon" type="image/x-icon" href="/images/kkk.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <link rel="stylesheet" href="/assets/vendor/css/pages/page-auth.css" />
+    <script src="/assets/vendor/js/helpers.js"></script>
+
+    <script src="/assets/js/config.js"></script>
+  </head>
+
+  <body>
+
+    <% if (typeof success_msg !== 'undefined' && success_msg && success_msg.length > 0) { %>
+  <div class="bs-toast toast fade show bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <i class="bx bx-check-circle me-2"></i>
+      <div class="me-auto fw-semibold">Success</div>
+      <small>Just now</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <%= success_msg %>
     </div>
   </div>
-</body>
+<% } %>
+
+<% if (typeof error_msg !== 'undefined' && error_msg && error_msg.length > 0) { %>
+  <div class="bs-toast toast fade show bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <i class="bx bx-error me-2"></i>
+      <div class="me-auto fw-semibold">Error</div>
+      <small>Just now</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <%= error_msg %>
+    </div>
+  </div>
+<% } %>
+<div id="adblock-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh; font-family: sans-serif;">
+  <div style="max-width: 500px; margin: 0 auto; background: #222; padding: 40px; border-radius: 8px; border: 1px solid #ff4444;">
+    <h2 style="color: #ff4444; margin-bottom: 20px;">Ad Blocker Detected!</h2>
+    <p style="font-size: 16px; line-height: 1.6;">Adblock detected. Please disable your ad blocker and try again to log in.</p>
+    <button onclick="window.location.reload()" style="margin-top: 25px; padding: 12px 30px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">I have disabled it, Refresh</button>
+  </div>
+</div>
+ <div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+          <div id="login-card" class="card">
+            <div class="card-body">
+              <div class="app-brand justify-content-center">
+                <a href="/" class="app-brand-link">
+              <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
+                <span class="app-brand-text demo text-body fw-bolder"><%= appName %></span>
+            </a>
+              </div>
+              <h4 class="mb-2">ADMIN! 💸</h4>
+              <p class="mb-4">Admin log</p>
+
+              <form id="form" class="mb-3" action="/admin/login" method="POST">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="username"
+                    placeholder="Enter your email or username"
+                    autofocus
+                    required
+                  />
+                </div>
+                <div class="mb-3 form-password-toggle">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="password">Password</label>
+                    <a href="/forgotpassword">
+                      <small>Forgot Password?</small>
+                    </a>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      id="password"
+                      class="form-control"
+                      name="password"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                      required
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="remember-me" name="rememberMe" />
+                    <label class="form-check-label" for="remember-me"> Remember Me </label>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                </div>
+              </form>
+                  <p class="text-center">
+                <span>welcom admin?</span>
+                <a href="/login">
+                  <span>login account</span>
+                </a>
+              </p>
+            </div>
+          </div>
+          </div>
+      </div>
+    </div>
+    <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/assets/vendor/js/bootstrap.js"></script>
+    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/assets/vendor/js/menu.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const rememberCheckbox = document.getElementById('remember-me');
+
+        // Check if data exists in local storage on page render
+        const savedEmail = localStorage.getItem('fluwent_email');
+        const savedPassword = localStorage.getItem('fluwent_password');
+
+        if (savedEmail && savedPassword) {
+          emailInput.value = window.atob(savedEmail); // Decodes base64 string safely
+          passwordInput.value = window.atob(savedPassword);
+          rememberCheckbox.checked = true;
+          
+          // REMOVED: loginForm.submit() has been removed so it won't force-submit anymore.
+        }
+          // Catch form submissions to update choices
+        loginForm.addEventListener('submit', function() {
+          if (rememberCheckbox.checked) {
+            localStorage.setItem('fluwent_email', window.btoa(emailInput.value)); // Encodes to base64
+            localStorage.setItem('fluwent_password', window.btoa(passwordInput.value));
+          } else {
+            localStorage.removeItem('fluwent_email');
+            localStorage.removeItem('fluwent_password');
+          }
+        });
+      });
+
+      function placeholderProbe() {
+        return new Promise((resolve) => {
+          const testElement = document.createElement('div');
+          testElement.className = 'adsbygoogle adsbox pub_300x250 pub_300x250m pub_728x90 text-ad textAd';
+          testElement.style.position = 'absolute';
+          testElement.style.top = '-9999px';
+          testElement.style.left = '-9999px';
+          testElement.style.width = '1px';
+          testElement.style.height = '1px';
+          testElement.style.opacity = '0';
+          testElement.style.pointerEvents = 'none';
+          document.body.appendChild(testElement);
+
+          const rect = testElement.getBoundingClientRect();
+          const style = window.getComputedStyle(testElement);
+          const blocked =
+            style.display === 'none' ||
+            style.visibility === 'hidden' ||
+            rect.width === 0 ||
+            rect.height === 0;
+
+          testElement.remove();
+          resolve(blocked);
+        });
+      }
+
+      function networkProbe() {
+        return new Promise((resolve) => {
+          const script = document.createElement('script');
+          const cleanup = () => {
+            if (script.parentNode) {
+              script.parentNode.removeChild(script);
+            }
+          };
+
+          const timer = window.setTimeout(() => {
+            cleanup();
+            resolve(false);
+          }, 600);
+
+          script.async = true;
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?cb=' + Date.now();
+          script.onload = () => {
+            window.clearTimeout(timer);
+            cleanup();
+            resolve(false);
+          };
+          script.onerror = () => {
+            window.clearTimeout(timer);
+            cleanup();
+            resolve(true);
+          };
+
+          document.head.appendChild(script);
+        });
+      }
+
+      function handleAdBlocker() {
+        document.getElementById("adblock-overlay").style.display = "block";
+        const loginCard = document.getElementById("login-card");
+        if (loginCard) {
+          loginCard.style.display = "none";
+        }
+      }
+
+      window.addEventListener('DOMContentLoaded', async function() {
+        const placeholderBlocked = await placeholderProbe();
+        const adRequestBlocked = await networkProbe();
+        
+        if (placeholderBlocked || adRequestBlocked) {
+          handleAdBlocker();
+        }
+      });
+    </script>
+  </body>
 </html>
+

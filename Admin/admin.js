@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 
 // Admin routh
 router.get("/admin", (req, res) => {
-  res.render("admin-login", { success_msg: req.flash("success_msg") });
+  res.render("admin-login", { success_msg: req.flash("success_msg"),  appName: process.env.APP_NAME, title: 'FluwentCash' });
 });
 
 // Admin login routh handler
