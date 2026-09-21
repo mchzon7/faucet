@@ -51,7 +51,7 @@ router.post("/withdraw",protect, async (req, res) => {
     }
 
     if(user.faucetClaims < 30) {
-      req.flash("error_msg", "you must claim the minimum of 30 faucet for first withdrawal!");
+      req.flash("error_msg", `You need ${30 - user.faucetClaims} more faucet claim(s) before your first withdrawal!`);
       return res.redirect("/withdrawal");
     }
 
