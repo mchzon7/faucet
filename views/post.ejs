@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+</head>
+<body class="bg-white font-sans text-slate-900">
+  <%- include('partials/header') %>
+
+  <main>
+    <article>
+      <header class="bg-slate-50">
+        <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+          <nav class="mb-6 text-sm font-semibold text-slate-500" aria-label="Breadcrumb">
+            <a href="/" class="hover:text-brand-green">Home</a>
+            <span class="mx-2">/</span>
+            <a href="/blog" class="hover:text-brand-green">Blog</a>
+            <span class="mx-2">/</span>
+            <span class="text-slate-700"><%= post.category %></span>
+          </nav>
+          <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-extrabold uppercase tracking-wider text-brand-green"><%= post.category %></span>
+          <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-brand-ink sm:text-5xl"><%= post.title %></h1>
+          <p class="mt-5 text-lg leading-8 text-slate-600"><%= post.excerpt %></p>
+          <div class="mt-6 flex flex-wrap items-center gap-4 text-sm font-bold text-slate-500">
+            <span><%= post.author.name %></span>
+            <span><%= post.readTime %> min read</span>
+            <time datetime="<%= new Date(post.publishedAt || post.createdAt).toISOString() %>"><%= new Date(post.publishedAt || post.createdAt).toLocaleDateString('en', { dateStyle: 'long' }) %></time>
+          </div>
+        </div>
+      </header>
+
+      <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
+        <img src="<%= post.coverImage %>" alt="<%= post.title %>" class="h-72 w-full rounded-2xl object-cover sm:h-[440px]">
+      </div>
+
+      <div class="mx-auto grid max-w-5xl gap-10 px-4 pb-16 sm:px-6 lg:grid-cols-[1fr_260px] lg:px-8">
+        <div class="article-body max-w-none text-lg">
+          <%- post.safeContent %>
+        </div>
+
+        <aside class="lg:sticky lg:top-24 lg:self-start">
+          <div class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+            <div class="flex items-center gap-4">
+              <img src="<%= post.author.avatar %>" alt="<%= post.author.name %>" class="h-14 w-14 rounded-full object-cover">
+              <div>
+                <h2 class="font-extrabold text-slate-950"><%= post.author.name %></h2>
+                <p class="text-sm font-semibold text-brand-green"><%= post.author.role %></p>
+              </div>
+            </div>
+            <p class="mt-4 text-sm leading-6 text-slate-600"><%= post.author.bio %></p>
+          </div>
+        </aside>
+      </div>
+    </article>
+
+    <% if (relatedArticles.length > 0) { %>
+      <section class="border-t border-slate-200 bg-slate-50 py-14">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 class="text-3xl font-extrabold text-brand-ink">Related Articles</h2>
+          <div class="mt-6 grid gap-6 md:grid-cols-3">
+            <% relatedArticles.forEach((article) => { %>
+              <a href="/blog/<%= article.slug %>" class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                <img src="<%= article.coverImage %>" alt="<%= article.title %>" class="h-40 w-full object-cover">
+                <div class="p-5">
+                  <span class="text-xs font-extrabold uppercase tracking-wider text-brand-green"><%= article.category %></span>
+                  <h3 class="mt-2 text-lg font-extrabold leading-snug text-slate-950 hover:text-brand-green"><%= article.title %></h3>
+                  <p class="mt-2 text-sm text-slate-500"><%= article.readTime %> min read</p>
+                </div>
+              </a>
+            <% }) %>
+          </div>
+        </div>
+      </section>
+    <% } %>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

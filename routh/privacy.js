@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/privacy-policy", (req, res) => {
-  res.render("privacy");
+  res.render("privacy", { appName: process.env.APP_NAME, title: 'FluwentCash' });
 });
 
 router.get("/terms-of-service", (req, res) => {
-  res.render("termsAndcondition");
+  res.render("termsAndcondition", { appName: process.env.APP_NAME, title: 'FluwentCash' });
 });
 
 router.get("/ads", (req, res)=> {

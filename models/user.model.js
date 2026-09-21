@@ -1,18 +1,34 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-    username: { type: String, unique: true, required: true},
+    username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    minlength: 3,
+    maxlength: 30,
+    match: [/^[a-zA-Z0-9_]+$/, 'Username may only contain letters, numbers, and underscores.']
+  },
 
     name: {
         type: String,
         required:true,
     },
 
-    email: {
+    lname: {
         type: String,
-        required: true,
-        unique: true
+        required:true,
     },
+
+    email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
+    maxlength: 120
+  },
 
     otp: String,
 
@@ -41,11 +57,18 @@ const userSchema = new mongoose.Schema({
         default: 0
     },
 
+    points: {
+    type: Number,
+    default: 0
+    },
+
     referrer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User", 
         default: null
     },
+
+    weeklyReferrals: { type: Number, default: 0 },
 
     referralCount: { type: Number,default:0},
 
@@ -60,6 +83,8 @@ const userSchema = new mongoose.Schema({
     progress: {type: Number, default: 0},
 
     totalEarned: {type: Number, default: 0},
+
+    faucetClaims: {type: Number, default: 0},
 
     totalRefEarned: {type: Number, default: 0},
 
@@ -81,6 +106,6 @@ const userSchema = new mongoose.Schema({
 }
 );
 
-const sss = mongoose.model("seeman", userSchema);
+const sss = mongoose.model("seemani", userSchema);
 
 module.exports = sss;

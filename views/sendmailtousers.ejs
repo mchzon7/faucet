@@ -1,114 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SendMail</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-    body {
-      background-color: #ECF0F1;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .navbar {
-      background-color: #2C3E50;
-    }
-    .navbar .nav-link, .navbar-brand {
-      color: #ECF0F1 !important;
-    }
-    .btn-primary {
-      background-color: #3498DB;
-      border: none;
-    }
-    .btn-primary:hover {
-      background-color: #2C3E50;
-    }
-    .form-container {
-      max-width: 700px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 30px;
-      margin-top: 80px;
-    }
-  </style>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">CRASHCASH-Admin</a>
-    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon bg-white"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="/admin/dashboard">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" href="/all-users">ManageUsers</a></li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="faucetDropdown" role="button" data-bs-toggle="dropdown">
-              ADD-OPTIONS
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Send Message - Admin Panel</title>
+    <meta name="description" content="" />
+    <link rel="icon" type="image/x-icon" href="/images/kkk.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght=0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <script src="/assets/vendor/js/helpers.js"></script>
+    <script src="/assets/js/config.js"></script>
+  </head>
+  <body>
+    
+    <div id="layout-wrapper" class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        
+        <!-- SIDEBAR MENU -->
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="/admin/dashboard" class="app-brand-link">
+              <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Fluwentcash</span>
             </a>
-            <ul class="dropdown-menu">
-            <li ><a class="dropdown-item" href="/addlinks">Add-Task</a></li>
-              <li><a class="dropdown-item" href="/admin/banner-ads">Banner-ADS</a></li>
-            </ul>
-          </li>
-        <li class="nav-item"><a class="nav-link" href="/getlinks">Link-Task</a></li>
-        <li class="nav-item"><a class="nav-link" href="/submitted-data">OOFD-SUBMIT</a></li>
-        <li class="nav-item"><a class="nav-link" href="/sendmailusers">SendMessage</a></li>
-        <li class="nav-item"><a class="nav-link" href="/recent-transactions">RecentTrx</a></li>
-        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+          <div class="menu-inner-shadow"></div>
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="/admin/dashboard" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div>Dashboard</div>
+              </a>
+            </li>
+            
+            <!-- Manage Users -->
+            <li class="menu-item">
+              <a href="/all-users" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>Manage Users</div>
+              </a>
+            </li>
 
-    <div class="container d-flex justify-content-center align-items-center">
-    <div class="form-container">
-      <h3 class="text-center text-primary">OOFD-SUBMIT</h3>
-      
-      <form action="/mail/all" method="POST">
-        <!-- Display flash messages -->
-      <% if (success_msg) { %>
-        <div style="color: green;">
-          <%= success_msg %>
-        </div>
-        <% } %>
-          <% if (error_msg) { %>
-            <div style="color: red;">
-              <%= error_msg %>
+            <!-- ADD-OPTIONS Dropdown -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-plus-circle"></i>
+                <div>Add Options</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/addlinks" class="menu-link">
+                    <div>Add-Task</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/banner-ads" class="menu-link">
+                    <div>Banner-ADS</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/rewards" class="menu-link">
+                    <div>Reward-controls</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- CARD options Dropdown -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-card"></i>
+                <div>Card Options</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/admin/cards" class="menu-link">
+                    <div>Cards</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/cards/create" class="menu-link">
+                    <div>Create card</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/card-stats" class="menu-link">
+                    <div>Card-start</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Link Task (Active) -->
+            <li class="menu-item">
+              <a href="/getlinks" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-link"></i>
+                <div>Link-Task</div>
+              </a>
+            </li>
+
+            <!-- IP Logs -->
+            <li class="menu-item">
+              <a href="/admin/ip-logs" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
+                <div>IP-logs</div>
+              </a>
+            </li>
+
+            <!-- OOFD Submit -->
+            <li class="menu-item">
+              <a href="/submitted-data" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div>OOFD-SUBMIT</div>
+              </a>
+            </li>
+
+            <!-- Send Message -->
+            <li class="menu-item">
+              <a href="/sendmailusers" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <div>SendMessage</div>
+              </a>
+            </li>
+
+            <!-- Recent Trx -->
+            <li class="menu-item">
+              <a href="/recent-transactions" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-transfer"></i>
+                <div>RecentTrx</div>
+              </a>
+            </li>
+
+            <!-- Logout -->
+            <li class="menu-item">
+              <a href="/logout" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-log-out"></i>
+                <div>Logout</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <!-- / SIDEBAR MENU -->
+
+        <!-- Layout Page Container -->
+        <div class="layout-page">
+          <%- include('partials/hhh') %>
+          
+          <!-- Top Navbar -->
+          <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
             </div>
-            <% } %>
-        <div class="mb-3">
-          <label for="subject" class="form-label">subject</label>
-          <input type="text" class="form-control" id="id" name="subject" placeholder="Enter the subject" required />
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
-          <input type="text" class="form-control" id="email" name="message" placeholder="Enter the message" required />
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Submit</button>
-      </form>
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <span class="fw-semibold text-muted">Fluwentcash</span>
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="/images/sett.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="/images/sett.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block">Admin</span>
+                            <small class="text-muted">Manager</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li>
+                      <a class="dropdown-item" href="/logout">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!-- / Top Navbar -->
 
-      <form action="/mail/single" method="POST">
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="id" name="email" placeholder="Enter the email" required />
+          <!-- Content Wrapper -->
+          <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+              
+              <!-- Title -->
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Communications /</span> SendMessage</h4>
+
+              <div class="row">
+                <!-- Form 1: Mail All Users -->
+                <div class="col-md-6 mb-4">
+                  <div class="card">
+                    <h5 class="card-header d-flex align-items-center justify-content-between">
+                      <span>Broadcast Message (All Users)</span>
+                      <i class="bx bx-group text-primary"></i>
+                    </h5>
+                    <div class="card-body mt-2">
+                      <form action="/mail/all" method="POST">
+                        <div class="mb-3">
+                          <label for="subjectAll" class="form-label">Subject</label>
+                          <input type="text" class="form-control" id="subjectAll" name="subject" placeholder="Enter the subject" required />
+                        </div>
+                        <div class="mb-3">
+                          <label for="messageAll" class="form-label">Message Body</label>
+                          <textarea class="form-control" id="messageAll" name="message" rows="4" placeholder="Enter the message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                          <i class="bx bx-paper-plane me-1"></i> Send to Everyone
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Form 2: Mail Single User -->
+                <div class="col-md-6 mb-4">
+                  <div class="card">
+                    <h5 class="card-header d-flex align-items-center justify-content-between">
+                      <span>Direct Message (Single User)</span>
+                      <i class="bx bx-user text-success"></i>
+                    </h5>
+                    <div class="card-body mt-2">
+                      <form action="/mail/single" method="POST">
+                        <div class="mb-3">
+                          <label for="emailSingle" class="form-label">Recipient Email</label>
+                          <input type="email" class="form-control" id="emailSingle" name="email" placeholder="Enter user's email address" required />
+                        </div>
+                        <div class="mb-3">
+                          <label for="subjectSingle" class="form-label">Subject</label>
+                          <input type="text" class="form-control" id="subjectSingle" name="subject" placeholder="Enter the subject" required />
+                        </div>
+                        <div class="mb-3">
+                          <label for="messageSingle" class="form-label">Message Body</label>
+                          <textarea class="form-control" id="messageSingle" name="message" rows="4" placeholder="Enter the message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">
+                          <i class="bx bx-paper-plane me-1"></i> Send Direct Email
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- / Content -->
+            
+            <div class="content-backdrop fade"></div>
+            <%- include('partials/footer') %>
+          </div>
+          <!-- / Content Wrapper -->
+
         </div>
-        <div class="mb-3">
-          <label for="subject" class="form-label">subject</label>
-          <input type="text" class="form-control" id="id" name="subject" placeholder="Enter the subject" required />
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Message</label>
-          <input type="text" class="form-control" id="email" name="message" placeholder="Enter the message" required />
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Submit</button>
-      </form>
+      </div>
+      <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+
+    <!-- Core JS -->
+    <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/assets/vendor/js/bootstrap.js"></script>
+    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/assets/vendor/js/menu.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
 </html>
+
+

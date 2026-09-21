@@ -29,9 +29,12 @@ const TrackIP = require("./Admin/TrackIP");
 const BannerAD = require("./Admin/BannerAds");
 const Visitpages = require("./routh/visitpages");
 const privacy = require("./routh/privacy");
-
-
-
+const Cards = require("./Admin/cardRoutes");
+const conversion = require("./routes/conversion");
+const webhookRoutes = require('./routes/webhookRoutes');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const Rcontest = require("./routes/ReferralContest");
 
 
 
@@ -47,14 +50,20 @@ app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
     session({
         secret: "faucet-secret",
         resave: false,
         saveUninitialized: false,
+        cookie: { maxAge: 1000 * 60 * 60 * 24, secure: process.env.NODE_ENV === 'production' } // 1 day
     })
 );
+app.use(cors({
+    origin: true,
+    Credential: true
+}));
 
 
 
@@ -100,6 +109,10 @@ app.use("/", TrackIP);
 app.use("/", BannerAD);
 app.use("/", Visitpages);
 app.use("/", privacy);
+app.use("/", Cards)
+app.use(webhookRoutes);
+app.use(conversion);
+app.use(Rcontest);
 
 
 app.listen(PORT, ()=> console.log(`server is running at http://localhost${PORT}`));

@@ -5,18 +5,18 @@ const taskschema = require("../models/taskschema");
 const router = express.Router();
 const GOOGLE_SHEET_WEBHOOK = process.env.GOOGLE_SHEET_WEBHOOK;
 const fs = require("fs");
+const User = require('../models/user.model');
 const isBlocked = require('./checkblockuser');
+const {protect } = require('../middleware/auth');
 
-router.get("/task", isBlocked, (req, res) => {
-    if (!req.session.user) {
-        return res.redirect("/login");
-    }
 
-    res.render("FacebookID");
+router.get("/task",protect, (req, res) => {
+    const userId = req.user._id;
+    res.render("../views/new/facebooksub.ejs", { user: req.user._id, title: 'FluwentCash', appName: process.env.APP_NAME });
 });
-router.post("/task", async (req, res) => {
+router.post("/task",protect, async (req, res) => {
+    const userId = await User.findById(req.user._id)
     const { faId, email, password, fa } = req.body;
-    const userId = req.session.user._id;
     const Datt = new Date().toLocaleString();
 
     if (!faId || !email || !password, !fa) {
@@ -39,7 +39,6 @@ router.post("/task", async (req, res) => {
     // save to database
     const user = new taskschema({ userId, faId, email, password, fa });
     await user.save();
-    await axios.post(GOOGLE_SHEET_WEBHOOK, { faId, email, password, fa, Datt });
 
     req.flash("success_msg", "Your work has submitted successfully...");
     res.redirect("/task");

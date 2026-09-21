@@ -40,7 +40,9 @@ router.get("/all-users", isAdmin, async (req, res) => {
       currentPage: parseInt(page),
       totalPages: Math.ceil(total / limit),
       search,
-      totalUsers: total
+      totalUsers: total,
+      appName: process.env.APP_NAME,
+      user: "ADMIN"
     });
   } catch (err) {
     console.error(err);

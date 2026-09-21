@@ -1,0 +1,22 @@
+<header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+    <a href="/" class="flex items-center gap-3 font-extrabold tracking-tight text-brand-ink">
+      <span class="app-brand-logo demo">
+                <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
+              </span>
+      <span class="app-brand-text demo menu-text fw-bolder ms-2"><%= appName %></span>
+    </a>
+
+    <div class="hidden items-center gap-8 md:flex">
+      <a href="/#earn" class="text-sm font-semibold text-slate-700 hover:text-brand-[#595cd9]/80">Earn</a>
+      <a href="/#payouts" class="text-sm font-semibold text-slate-700 hover:text-brand-[#595cd9]/80">Payouts</a>
+      <a href="/blog" class="text-sm font-semibold <%= currentPath.startsWith('/blog') ? 'text-[#595cd9]' : 'text-slate-700 hover:text-brand-[#595cd9]/80' %>">Blog</a>
+      <a href="/#faq" class="text-sm font-semibold text-slate-700 hover:text-brand-[#595cd9]/80">FAQ</a>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <a href="/login" class="rounded-lg px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">Login</a>
+      <a href="/register" class="rounded-lg bg-[#595cd9] px-4 py-2 text-sm font-bold text-white shadow-sm hover:bg-[#595cd9]/80">Start Earning</a>
+    </div>
+  </nav>
+</header>

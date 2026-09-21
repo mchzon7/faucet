@@ -1,126 +1,299 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Submitted User Data</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: #ECF0F1;
-    }
-    .navbar {
-      background-color: #2C3E50;
-    }
-    .navbar .nav-link, .navbar-brand {
-      color: #ECF0F1 !important;
-    }
-    .card {
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    .card-header {
-      background-color: #2C3E50;
-      color: #ECF0F1;
-    }
-    .btn-primary {
-      background-color: #3498DB;
-      border: none;
-    }
-    .btn-primary:hover {
-      background-color: #2980B9;
-    }
-    .table th {
-      background-color: #BDC3C7;
-    }
-  </style>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">CRASHCASH-Admin</a>
-    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon bg-white"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="/admin/dashboard">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" href="/all-users">ManageUsers</a></li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="faucetDropdown" role="button" data-bs-toggle="dropdown">
-              ADD-OPTIONS
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Links Task Manager - Admin Panel</title>
+    <meta name="description" content="" />
+    <link rel="icon" type="image/x-icon" href="/images/kkk.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght=0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <script src="/assets/vendor/js/helpers.js"></script>
+    <script src="/assets/js/config.js"></script>
+  </head>
+  <body>
+    
+    <div id="layout-wrapper" class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        
+        <!-- SIDEBAR MENU -->
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="/admin/dashboard" class="app-brand-link">
+              <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">CRASHCASH-Admin</span>
             </a>
-            <ul class="dropdown-menu">
-            <li ><a class="dropdown-item" href="/addlinks">Add-Task</a></li>
-              <li><a class="dropdown-item" href="/admin/banner-ads">Banner-ADS</a></li>
-            </ul>
-          </li>
-        <li class="nav-item"><a class="nav-link" href="/getlinks">Link-Task</a></li>
-        <li class="nav-item"><a class="nav-link" href="/admin/ip-logs">IP-logs</a></li>
-        <li class="nav-item"><a class="nav-link" href="/submitted-data">OOFD-SUBMIT</a></li>
-        <li class="nav-item"><a class="nav-link" href="/sendmailusers">SendMessage</a></li>
-        <li class="nav-item"><a class="nav-link" href="/recent-transactions">RecentTrx</a></li>
-        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-      </ul>
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+          <div class="menu-inner-shadow"></div>
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="/admin/dashboard" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div>Dashboard</div>
+              </a>
+            </li>
+            
+            <!-- Manage Users -->
+            <li class="menu-item">
+              <a href="/all-users" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>Manage Users</div>
+              </a>
+            </li>
+
+            <!-- ADD-OPTIONS Dropdown -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-plus-circle"></i>
+                <div>Add Options</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/addlinks" class="menu-link">
+                    <div>Add-Task</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/banner-ads" class="menu-link">
+                    <div>Banner-ADS</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/rewards" class="menu-link">
+                    <div>Reward-controls</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Link Task (Active) -->
+            <li class="menu-item active">
+              <a href="/getlinks" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-link"></i>
+                <div>Link-Task</div>
+              </a>
+            </li>
+
+            <!-- IP Logs -->
+            <li class="menu-item">
+              <a href="/admin/ip-logs" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
+                <div>IP-logs</div>
+              </a>
+            </li>
+
+            <!-- OOFD Submit -->
+            <li class="menu-item">
+              <a href="/submitted-data" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div>OOFD-SUBMIT</div>
+              </a>
+            </li>
+
+            <!-- Send Message -->
+            <li class="menu-item">
+              <a href="/sendmailusers" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <div>SendMessage</div>
+              </a>
+            </li>
+
+            <!-- Recent Trx -->
+            <li class="menu-item">
+              <a href="/recent-transactions" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-transfer"></i>
+                <div>RecentTrx</div>
+              </a>
+            </li>
+
+            <!-- Logout -->
+            <li class="menu-item">
+              <a href="/logout" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-log-out"></i>
+                <div>Logout</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <!-- / SIDEBAR MENU -->
+
+        <!-- Layout Page Container -->
+        <div class="layout-page">
+          <%- include('partials/hhh') %>
+          
+          <!-- Top Navbar -->
+          <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <span class="fw-semibold text-muted">CRASHCASH-Admin Panel</span>
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="/images/sett.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="/images/sett.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block">Admin</span>
+                            <small class="text-muted">Manager</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li>
+                      <a class="dropdown-item" href="/logout">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!-- / Top Navbar -->
+
+          <!-- Content Wrapper -->
+          <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+              
+              <!-- Title and Search Section -->
+              <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+                <h4 class="fw-bold m-0"><span class="text-muted fw-light">Tasks /</span> Links-Task</h4>
+                
+                <!-- Search Form[span_1](start_span)[span_1](end_span) -->
+                <form class="d-flex" method="GET" action="/getlinks" style="max-width: 350px; width: 100%;">
+                  <div class="input-group">
+                    <input type="text" name="search" value="<%= search %>" class="form-control" placeholder="Search task..." />
+                    <button class="btn btn-primary" type="submit">
+                      <i class="bx bx-search"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
+              <!-- Content Card -->
+              <div class="card">
+                <h5 class="card-header">Task Submissions</h5>
+                
+                <% if (data.length > 0) { %>
+                  <div class="table-responsive text-nowrap">
+                    <table class="table table-striped table-hover align-middle">
+                      <thead>
+                        <tr>
+                          <th>Link-Url</th>
+                          <th>Link-Name</th>
+                          <th>Description</th>
+                          <th>Reward</th>
+                          <th>Submitted At</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody class="table-border-bottom-0">
+                        <% data.forEach(item => { %>
+                          <tr>
+                            <td>
+                              <a href="<%= item.url %>" target="_blank" class="text-truncate d-inline-block" style="max-width: 200px;">
+                                <%= item.url %>
+                              </a>
+                            </td>
+                            <td><span class="fw-semibold text-heading"><%= item.name %></span></td>
+                            <td><span class="text-muted text-wrap d-block" style="max-width: 250px;"><%= item.description %></span></td>
+                            <td><span class="badge bg-label-success">$<%= item.reward %></span></td>
+                            <td><%= new Date(item.createdAt).toLocaleDateString() %></td>
+                            <td>
+                              <form action="/getlinks/<%= item._id %>" method="POST" style="display:inline;">
+                                <button class="btn btn-xs btn-outline-danger" onclick="return confirm('Delete this entry?')">
+                                  <i class="bx bx-trash me-1"></i>Delete
+                                </button>
+                              </form>
+                            </td>
+                          </tr>
+                        <% }) %>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <!-- Styled Footer Pagination -->
+                  <div class="card-footer d-flex justify-content-between align-items-center flex-wrap gap-2">
+                    <small class="text-muted">Showing current page results</small>
+                    <nav aria-label="Page navigation">
+                      <ul class="pagination pagination-sm m-0 justify-content-end">
+                        <% for (let i = 1; i <= totalPages; i++) { %>
+                          <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                            <a class="page-link" href="?search=<%= search %>&page=<%= i %>"><%= i %></a>
+                          </li>
+                        <% } %>
+                      </ul>
+                    </nav>
+                  </div>
+
+                <% } else { %>
+                  <div class="card-body text-center py-5">
+                    <i class="bx bx-file-find text-muted mb-3" style="font-size: 3rem;"></i>
+                    <p class="mb-0 text-muted">No task submissions found.</p>
+                  </div>
+                <% } %>
+              </div>
+
+            </div>
+            <!-- / Content -->
+            
+            <div class="content-backdrop fade"></div>
+            <%- include('partials/footer') %>
+          </div>
+          <!-- / Content Wrapper -->
+
+        </div>
+      </div>
+      <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-  </div>
-</nav>
 
-<div class="container mt-5">
-  <h2 class="mb-4">Links-Task</h2>
-
-  <form class="d-flex mb-4" method="GET" action="/getlinks">
-    <input type="text" name="search" value="<%= search %>" class="form-control me-2" placeholder="Search by Name or Description">
-    <button class="btn btn-primary">Search</button>
-  </form>
-
-  <% if (data.length > 0) { %>
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Link-Url</th>
-          <th>Link-Name</th>
-          <th>Description</th>
-          <th>Reward</th>
-          <th>Submitted At</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% data.forEach(item => { %>
-          <tr>
-            <td><%= item.url %></td>
-            <td><%= item.name %></td>
-            <td><%= item.description %></td>
-            <td><%= item.reward %></td>
-            <td><%= new Date(item.createdAt).toLocaleDateString() %></td>
-            <td>
-              <form action="/getlinks/<%= item._id %>" method="POST" style="display:inline;">
-                <button class="btn btn-danger btn-sm" onclick="return confirm('Delete this entry?')">Delete</button>
-              </form>
-            </td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-
-    <!-- Pagination -->
-    <nav>
-      <ul class="pagination">
-        <% for (let i = 1; i <= totalPages; i++) { %>
-          <li class="page-item <%= i === currentPage ? 'active' : '' %>">
-            <a class="page-link" href="?search=<%= search %>&page=<%= i %>"><%= i %></a>
-          </li>
-        <% } %>
-      </ul>
-    </nav>
-
-  <% } else { %>
-    <p>No submissions found.</p>
-  <% } %>
-
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- Core JS -->
+    <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/assets/vendor/js/bootstrap.js"></script>
+    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/assets/vendor/js/menu.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
 </html>
+
+

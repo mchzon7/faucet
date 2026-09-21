@@ -4,10 +4,10 @@ const User = require("../models/user.model");
 const Rcontrol = require("../models/Reward.model");
 const BannerAD = require("../models/Banner.model");
 const isBlocked = require('./checkblockuser');
+const { protect } = require("../middleware/auth");
 
-router.get("/page1", isBlocked, isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
-  const user = await User.findById(userId);
+router.get("/page1",protect, async (req, res) => {
+  const user = await User.findById(req.user._id);
   const banners = await BannerAD.find({isActive: true});
   if (!user) {
     return res.redirect("/login");
@@ -15,11 +15,11 @@ router.get("/page1", isBlocked, isAuthenticated, async (req, res) => {
 
   user.page1 = true;
   await user.save();
-  res.render("page1", { banners });
+  res.render("page1", { banners, user });
 });
 
-router.get("/page2", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.get("/page2",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({isActive: true});
   if (!user || user.page1 !== true) {
@@ -32,8 +32,8 @@ router.get("/page2", isAuthenticated, async (req, res) => {
   res.render("page2", {banners});
 });
 
-router.get("/page3", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.get("/page3",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({ isActive: true });
   if (!user || user.page2 !== true) {
@@ -46,8 +46,8 @@ router.get("/page3", isAuthenticated, async (req, res) => {
   res.render("page3", {banners});
 });
 
-router.get("/page4", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.get("/page4",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({ isActive: true });
   if (!user || user.page3 !== true) {
@@ -60,8 +60,8 @@ router.get("/page4", isAuthenticated, async (req, res) => {
   res.render("page4", {banners});
 });
 
-router.get("/page5", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.get("/page5",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({isActive: true});
   if (!user || user.page4 !== true) {
@@ -74,8 +74,8 @@ router.get("/page5", isAuthenticated, async (req, res) => {
   res.render("page5", {banners});
 });
 
-router.get("/page6", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.get("/page6",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({isActive: true});
   if (!user || user.page5 !== true) {
@@ -88,8 +88,8 @@ router.get("/page6", isAuthenticated, async (req, res) => {
   res.render("page6", {banners});
 });
 
-router.get("/page7", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.get("/page7",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({isActive: true});
   if (!user || user.page6 !== true) {
@@ -102,8 +102,8 @@ router.get("/page7", isAuthenticated, async (req, res) => {
   res.render("page7", {banners});
 });
 
-router.get("/page8", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.get("/page8",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({isActive: true});
   if (!user || user.page7 !== true) {
@@ -116,8 +116,8 @@ router.get("/page8", isAuthenticated, async (req, res) => {
   res.render("page8", {banners});
 });
 
-router.get("/page9", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.get("/page9",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({isActive: true});
   if (!user || user.page8 !== true) {
@@ -130,8 +130,8 @@ router.get("/page9", isAuthenticated, async (req, res) => {
   res.render("page9", {banners});
 });
 
-router.get("/page10", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.get("/page10",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   const banners = await BannerAD.find({isActive: true});
   if (!user || user.page9 !== true) {
@@ -144,8 +144,8 @@ router.get("/page10", isAuthenticated, async (req, res) => {
   res.render("page10", {banners});
 });
 
-router.post("/reward/user", isAuthenticated, async (req, res) => {
-  const userId = req.session.user;
+router.post("/reward/user",protect, async (req, res) => {
+  const userId = req.user._id;
   const user = await User.findById(userId);
   if (!user || user.page10 !== true) {
     req.flash("error_msg", "No reward giving");
@@ -161,15 +161,11 @@ router.post("/reward/user", isAuthenticated, async (req, res) => {
   user.page10 = false;
   const reward = Rcheck.visit10sitereward;
   user.balance += reward;
+  user.totalEarned += reward;
   await user.save();
   req.session.user = user;
-  req.flash("success_msg", "You have earn 0.5 USD");
+  req.flash("success_msg", "Reward added successfully");
   res.redirect("/dashboard");
 });
-
-function isAuthenticated(req, res, next) {
-  if (!req.session.user) return res.redirect("/login");
-  next();
-};
 
 module.exports = router;

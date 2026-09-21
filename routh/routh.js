@@ -1,10 +1,13 @@
 const express = require("express");
+const User = require('../models/user.model')
 const router = express.Router();
+const { protect } = require("../middleware/auth");
 
 // Route to track the link before redirecting
-router.get("/", (req, res) => {
+router.get("/",protect, async (req, res) => {
   const {url, linkId} = req.query;
-  if (!req.session.user) {
+  const user = await User.findById(req.user._id).lean();
+  if (!user) {
     res.redirect("/login");
   }
 

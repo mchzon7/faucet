@@ -4,6 +4,7 @@ const TrackIP = require("../models/TrackIP.model");
 const User = require("../models/user.model");
 const Rcontrol = require("../models/Reward.model");
 const isAdmin = require("./isAdmin");
+const { protect } = require("../middleware/auth");
 
 // Get IP address utility
 function getClientIp(req) {
@@ -11,20 +12,20 @@ function getClientIp(req) {
 }
 
 // Route to handle task click
-router.get("/complete-task", async (req, res) => {
-  if (!req.session.user) {
+router.get("/complete-task",protect,  async (req, res) => {
+  const user = await User.findById(req.user._id)
+  if (!user) {
     return res.redirect("/login");
   }
-  const user = await User.findById(req.session.user._id);
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
   const existing = await TrackIP.findOne({ ip });
-  res.render("trackip", { taskLocked: !!existing, user });
+  res.render("../views/new/dailytask", { taskLocked: !!existing, user, appName: process.env.APP_NAME, title: 'FluwentCash' });
 });
 
-router.post("/complete-task", (req, res) => res.redirect("https://trianglerockers.com/1818637"));
+router.post("/complete-task",protect, (req, res) => res.redirect("https://trianglerockers.com/1818637"));
 
 // Route to handle task click
-router.get("/reward-task", async (req, res) => {
+router.get("/reward-task",protect, async (req, res) => {
   const ip = getClientIp(req);
 
   const Rcheck = await Rcontrol.findOne({ Rname: "control" });
@@ -55,7 +56,7 @@ router.get("/reward-task", async (req, res) => {
 // Get recent IP logs (e.g., last 24 hrs)
 router.get("/admin/ip-logs", isAdmin, async (req, res) => {
   const logs = await TrackIP.find().populate("userId", "email");
-  res.render("admin-ip-logs", { logs });
+  res.render("admin-ip-logs", { logs, appName: process.env.APP_NAME });
 });
 
 module.exports = router;

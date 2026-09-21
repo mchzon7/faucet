@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Admin CSS -->
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h4 class="mb-0">
+                    <i class="fas fa-plus-circle me-2"></i>Create New Credit Card
+                </h4>
+            </div>
+            <div class="card-body">
+
+                <form action="admin/ccard" method="POST" class="needs-validation" novalidate>
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="cardNumber" class="form-label">
+                                    <i class="fas fa-credit-card me-1"></i>Card Number
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text"></span>
+                                    <input type="number" class="form-control" id="cardNumber" name="cardnum" 
+                                           min="1" required 
+                                           placeholder="e.g., 123456789" value="">
+                                </div>
+                                <div class="form-text">Unique identifier for the credit card</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="form-label">
+                                    <i class="fas fa-dollar-sign me-1"></i>Card Amount
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="amount" name="amount" 
+                                           min="1" step="0.01" required 
+                                           placeholder="e.g., 1.00" value="1.00">
+                                </div>
+                                <div class="form-text">This amount will be displayed on the card</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="totalRedemptions" class="form-label">
+                                    <i class="fas fa-users me-1"></i>Pepele to redeem
+                                </label>
+                                <input type="number" class="form-control" id="totalRedemptions" 
+                                       name="redemption" min="1" required 
+                                       placeholder="Number of users who can redeem" value="100">
+                                <div class="form-text">Maximum number of users who can redeem this card</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="pointsRequired" class="form-label">
+                                    <i class="fas fa-star me-1"></i>Points Required
+                                </label>
+                                <input type="number" class="form-control" id="pointsRequired" 
+                                       name="pointsRequired" min="0" required 
+                                       placeholder="Points needed to redeem" value="500">
+                                <div class="form-text">Points a user needs to redeem this card</div>
+                            </div>
+                        </div>
+                         <!-- Right Column - Preview -->
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="card-title">
+                                        <i class="fas fa-eye me-2"></i>Card Preview
+                                    </h6>
+                                    <div id="cardPreview" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                                        padding: 40px; border-radius: 15px; color: white; 
+                                        max-width: 350px; margin: 0 auto;">
+                                        <div class="text-end mb-3">
+                                            <i class="fas fa-credit-card fa-2x"></i>
+                                        </div>
+                                        <div class="text-center">
+                                            <h1 id="previewAmount">$1.00</h1>
+                                            <small>★ Reward Card</small>
+                                        </div>
+                                        <div class="mt-3 text-center">
+                                            <small id="previewCardNumber">**  ** 1234</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3 text-center">
+                                        <small class="text-muted">Card number is automatically generated</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Buttons -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4 pt-3 border-top">
+                        <a href="/admin/cards" class="btn btn-secondary me-md-2">
+                            <i class="fas fa-times me-2"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Create Card
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const amountInput = document.getElementById('amount');
+    const displayAmountInput = document.getElementById('displayAmount');
+    const previewAmount = document.getElementById('previewAmount');
+
+    function updatePreview() {
+        const amount = amountInput.value || '0';
+        const display = displayAmountInput.value || `$${parseFloat(amount).toFixed(2)}`;
+        previewAmount.textContent = display;
+    }
+
+    amountInput.addEventListener('input', updatePreview);
+    displayAmountInput.addEventListener('input', updatePreview);
+    
+    // Generate random card number for preview
+    const cardNumber = '**  ** ' + Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('previewCardNumber').textContent = cardNumber;
+});
+</script>
+</body>
+</html>

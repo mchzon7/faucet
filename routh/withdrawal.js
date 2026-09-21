@@ -3,24 +3,28 @@ const router = express.Router();
 const Transaction = require("../models/transaction");
 const User = require("../models/user.model");
 const isBlocked = require('./checkblockuser');
+const { protect } = require("../middleware/auth");
 
 // Withdrawal Routh
-router.get("/withdrawal", isBlocked, (req, res) => {
-  if (!req.session.user) {
+router.get("/withdrawal",protect, async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (!user ) {
     req.flash("error_msg", "please login");
     return res.redirect("/login");
   }
 
-  res.render("withdrawal", {user: req.session.user});
+  res.render("../views/new/withdrawal", {user, appName: process.env.APP_NAME, title: 'FluwentCash'});
 });
 
-router.post("/withdraw", async (req, res) => {
-  if (!req.session.user) {
+router.post("/withdraw",protect, async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (!user) {
     req.flash("error_msg", "please login");
     res.redirect("/login");
   }
   try {
-    const userId = req.session.user._id;
+    const user = await User.findById(req.user._id);
+    const userId = user;
     const {amount} = req.body;
     const {wallet} = req.body;
 
@@ -31,7 +35,6 @@ router.post("/withdraw", async (req, res) => {
     }
 
     // Get user balance
-    const user = await User.findById(userId);
     if (!user || user.balance < amount) {
       req.flash("error_msg", "Insufficient balance");
       return res.redirect("/withdrawal");
@@ -47,12 +50,17 @@ router.post("/withdraw", async (req, res) => {
       return res.redirect("/withdrawal");
     }
 
-    if (req.session.user.balance >= 2) {
+    if(user.faucetClaims !== 30) {
+      req.flash("error_msg", "you must claim the minimum of 30 faucet for first withdrawal!");
+      return res.redirect("/withdrawal");
+    }
+
+    if (userId.balance >= 3) {
       const user = await User.findById(userId);
       const apiKey = process.env.WithdrawKey;
       const to = wallet;
-      const amonn = parseInt(amount * 100000000);
-      const currency = "DOGE";
+      const amonn = parseInt(amount * 1);
+      const currency = "USDT";
 
       const data = new URLSearchParams();
       data.append("api_key", apiKey);
@@ -72,7 +80,7 @@ router.post("/withdraw", async (req, res) => {
             if (json.status === 200) {
               user.balance -= amount;
               user.save();
-              req.session.user.balance = user.balance;
+              req.user.balance = user.balance;
               req.flash("success_msg", "Withdrawal successfully");
               res.redirect("/withdrawal");
             } else {
@@ -82,13 +90,13 @@ router.post("/withdraw", async (req, res) => {
           })
           .catch(() => {
             req.flash("error_msg", "Minimum balance required: 3 USDT");
-            return res.render("withdrawal");
+            return res.render("../views/new/withdrawal",{user, appName: process.env.APP_NAME, title: 'FluwentCash'});
           });
     }
   } catch (error) {
     console.error(error);
     req.flash("error_msg", "server error");
-    return res.render("withdrawal");
+    return res.render("../views/new/withdrawal",{user, appName: process.env.APP_NAME, title: 'FluwentCash'});
   }
 });
 

@@ -1,0 +1,55 @@
+<% if (typeof user !== 'undefined' && user && !user.isVerified) { %>
+  <div class="sticky-top alert alert-warning alert-dismissible fade show d-flex flex-column flex-md-row align-items-md-center justify-content-between p-3 mb-4 rounded border" role="alert">
+    <div class="d-flex align-items-center mb-3 mb-md-0 me-md-4">
+      <i class="bx bx-shield-quarter me-2 fs-4"></i>
+      <span>Your email is not verified. Please verify to unlock full access.</span>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <form action="/send-otp" method="POST" class="m-0">
+        <button type="submit" class="btn btn-warning btn-sm fw-semibold shadow-sm">
+          Verify Your Email
+        </button>
+      </form>
+      <button type="button" class="btn-close static-close-btn ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+<% } %>
+
+<% if (typeof success_msg !== 'undefined' && success_msg && success_msg.length > 0) { %>
+  <div class="bs-toast toast fade show bg-success mb-3" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <i class="bx bx-check-circle me-2"></i>
+      <div class="me-auto fw-semibold">Success</div>
+      <small class="text-muted"><%= new Date().toLocaleString() %></small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <%= success_msg %>
+    </div>
+  </div>
+<% } %>
+
+<% if (typeof error_msg !== 'undefined' && error_msg && error_msg.length > 0) { %>
+  <div class="bs-toast toast fade show bg-danger mb-3" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <i class="bx bx-error me-2"></i>
+      <div class="me-auto fw-semibold">Error</div>
+      <small class="text-muted"><%= new Date().toLocaleString() %></small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <%= error_msg %>
+    </div>
+  </div>
+<% } %>
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+
+
+
+
+
+
+
+      

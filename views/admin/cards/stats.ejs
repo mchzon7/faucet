@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Credit Card Statistics Overview</title>
+    <meta name="description" content="" />
+    <link rel="icon" type="image/x-icon" href="/images/kkk.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght=0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <script src="/assets/vendor/js/helpers.js"></script>
+    <script src="/assets/js/config.js"></script>
+  </head>
+  <body>
+    <div id="layout-wrapper" class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+         <!-- SIDEBAR MENU -->
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="/admin/dashboard" class="app-brand-link">
+              <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Fluwentcash</span>
+            </a>
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+          <div class="menu-inner-shadow"></div>
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="/admin/dashboard" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div>Dashboard</div>
+              </a>
+            </li>
+            
+            <!-- Manage Users -->
+            <li class="menu-item">
+              <a href="/all-users" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>Manage Users</div>
+              </a>
+            </li>
+
+            <!-- ADD-OPTIONS Dropdown -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-plus-circle"></i>
+                <div>Add Options</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/addlinks" class="menu-link">
+                    <div>Add-Task</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/banner-ads" class="menu-link">
+                    <div>Banner-ADS</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/rewards" class="menu-link">
+                    <div>Reward-controls</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- CARD options Dropdown -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-card"></i>
+                <div>Card Options</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/admin/cards" class="menu-link">
+                    <div>Cards</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/cards/create" class="menu-link">
+                    <div>Create card</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/card-stats" class="menu-link">
+                    <div>Card-start</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Link Task (Active) -->
+            <li class="menu-item">
+              <a href="/getlinks" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-link"></i>
+                <div>Link-Task</div>
+              </a>
+            </li>
+
+            <!-- IP Logs -->
+            <li class="menu-item">
+              <a href="/admin/ip-logs" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
+                <div>IP-logs</div>
+              </a>
+            </li>
+
+            <!-- OOFD Submit -->
+            <li class="menu-item">
+              <a href="/submitted-data" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div>OOFD-SUBMIT</div>
+              </a>
+            </li>
+
+            <!-- Send Message -->
+            <li class="menu-item">
+              <a href="/sendmailusers" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <div>SendMessage</div>
+              </a>
+            </li>
+
+            <!-- Recent Trx -->
+            <li class="menu-item">
+              <a href="/recent-transactions" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-transfer"></i>
+                <div>RecentTrx</div>
+              </a>
+            </li>
+
+            <!-- Logout -->
+            <li class="menu-item">
+              <a href="/logout" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-log-out"></i>
+                <div>Logout</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+
+        <div class="layout-page">
+          <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="/images/kkk.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="/images/kkk.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block"></span>
+                            <small class="text-muted">Admin</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li>
+                      <a class="dropdown-item text-danger" href="/logout">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <div class="content-wrapper">
+            <%- include('../partials/hhh') %>
+            <div class="container-xxl flex-grow-1 container-p-y">
+
+              <div class="row mb-4">
+                <div class="col-md-12">
+                  <h2><i class="fas fa-chart-bar me-2"></i>Card Statistics Overview</h2>
+                  <p class="text-muted">High-level insights on registered cards and redemption metrics</p>
+                </div>
+              </div>
+
+              <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                  <div class="card bg-primary text-white h-100">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h6 class="card-title text-white-50">Total Card Registry</h6>
+                          <h2><%= stats.totalCards %></h2>
+                        </div>
+                        <i class="fas fa-credit-card fa-2x text-white-50"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card bg-success text-white h-100">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h6 class="card-title text-white-50">Active Ready Cards</h6>
+                          <h2><%= stats.activeCards %></h2>
+                        </div>
+                        <i class="fas fa-check-circle fa-2x text-white-50"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card bg-info text-white h-100">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h6 class="card-title text-white-50">Total Redemptions</h6>
+                          <h2><%= stats.totalRedemptions %></h2>
+                        </div>
+                        <i class="fas fa-hand-holding-usd fa-2x text-white-50"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card bg-warning text-white h-100">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h6 class="card-title text-white-50">Depleted Cards</h6>
+                          <h2><%= stats.totalCards - stats.activeCards %></h2>
+                        </div>
+                        <i class="fas fa-exclamation-circle fa-2x text-white-50"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-4">
+                <div class="card-header pb-0">
+                  <h5 class="card-title"><i class="fas fa-list me-2"></i>Performance breakdown per Card</h5>
+                </div>
+                <div class="table-responsive text-nowrap mt-3">
+                  <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Card Number</th>
+                        <th>Amount</th>
+                        <th>Redemptions</th>
+                        <th>Points Required</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (recentCards && recentCards.length > 0) { %>
+                        <% recentCards.forEach(function(card) { %>
+                            <tr>
+                                <td><code><%= card.cardNumber %></code></td>
+                                <td><strong>$<%= card.amount %></strong></td>
+                                <td>
+                                    <span class="badge bg-primary">
+                                        <%= card.remainingRedemptions %>/<%= card.totalRedemptions %>
+                                    </span>
+                                </td>
+                                <td><%= card.pointsRequired %></td>
+                                <td>
+                                    <span class="badge <%= card.isActive && card.remainingRedemptions > 0 ? 'bg-success' : 'bg-secondary' %>">
+                                        <%= card.isActive && card.remainingRedemptions > 0 ? 'Active' : 'Inactive' %>
+                                    </span>
+                                </td>
+                                <td><%= new Date(card.createdAt).toLocaleDateString() %></td>
+                                <td>
+                                    <a href="/admin/card/<%= card._id %>" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-4">
+                                <i class="fas fa-inbox fa-2x d-block mb-2"></i>
+                                No cards created yet
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+                </div>
+              </div>
+
+            </div>
+            <%- include('../partials/footer') %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/assets/vendor/js/bootstrap.js"></script>
+    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/assets/vendor/js/menu.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
+
+

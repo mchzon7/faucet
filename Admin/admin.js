@@ -64,7 +64,9 @@ router.get("/admin/dashboard", isAdmin, async (req, res) => {
       currentPage: page,
       totalPages: Math.ceil(transactions / limit),
       blockedUsers,
-      totalEarnings: totalEarnings[0]?.total || 0
+      totalEarnings: totalEarnings[0]?.total || 0,
+      appName: process.env.APP_NAME,
+      user: 'ADMIN'
     });
   } catch (err) {
     res.status(500).send("Server error");
@@ -109,7 +111,7 @@ router.get("/rewards", isAdmin, async (req, res) => {
   if (!settings) {
     settings = await RewardSchema.create({});
   }
-  res.render("setreward", { settings });
+  res.render("setreward", { settings, appName: process.env.APP_NAME, user: 'ADMIN' });
 });
 
 // POST update reward settings
@@ -132,7 +134,7 @@ router.post("/rewards", isAdmin, async (req, res) => {
 });
 
 // Adding a PTC Link 
-router.get("/addlinks", (req, res) => res.render("admin"));
+router.get("/addlinks", isAdmin, (req, res) => res.render("admin", {appName: process.env.APP_NAME}));
 router.post("/ptc/add-link", async (req, res) => {
   const { name, url, description, reward } = req.body;
 

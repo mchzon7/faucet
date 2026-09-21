@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm">
+  <input type="text" placeholder="Enter your data..." required>
+  <button type="submit">Submit</button>
+</form>
+
+
+<div class="d-flex justify-content-center">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : 'e408764fee9aa61f98a2f598a18be3d3',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/e408764fee9aa61f98a2f598a18be3d3/invoke.js"></script>
+          </div>
+<div id="adblock-message" style="color: red; font-weight: bold; margin-top: 10px;"></div>
+<script>
+    // 1. Create the decoy element mimicking an ad
+const adDecoy = document.createElement('div');
+adDecoy.className = 'pub_300x250 ad-banner adsense'; // Common ad-blocker triggers
+adDecoy.innerText = 'fluentcash';
+adDecoy.style.position = 'absolute';
+adDecoy.style.left = '-9999px'; // Hide it off-screen so regular users don't see it
+document.body.appendChild(adDecoy);
+
+// 2. Wait a split second for the ad-blocker to process and hide the element
+setTimeout(() => {
+  const form = document.getElementById('myForm');
+  const messageDiv = document.getElementById('adblock-message');
+
+  // Check if the decoy was hidden, removed, or has no height/width
+  const isBlocked = 
+    window.getComputedStyle(adDecoy).display === 'none' || 
+    window.getComputedStyle(adDecoy).visibility === 'hidden' || 
+    adDecoy.clientHeight === 0;
+
+  // 3. If blocked (or text isn't showing properly), take action
+  if (isBlocked || adDecoy.innerText !== 'fluentcash') {
+    // Disable all inputs and buttons inside the form
+    const elements = form.elements;
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].disabled = true;
+    }
+    
+    // Show the warning message
+    messageDiv.innerText = 'Please disable your adblocker and try again.';
+  }
+
+  // Clean up the decoy element from the DOM
+  adDecoy.remove();
+}, 200);
+</script>
+</body>
+</html>

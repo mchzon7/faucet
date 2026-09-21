@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Create new card</title>
+    <meta name="description" content="" />
+    <link rel="icon" type="image/x-icon" href="/images/kkk.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght=0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <script src="/assets/vendor/js/helpers.js"></script>
+    <script src="/assets/js/config.js"></script>
+  </head>
+  <body>
+    <div id="adblock-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh; font-family: sans-serif;">
+      <div style="max-width: 500px; margin: 0 auto; background: #222; padding: 40px; border-radius: 8px; border: 1px solid #ff4444;">
+        <h2 style="color: #ff4444; margin-bottom: 20px;">Ad Blocker Detected!</h2>
+        <p style="font-size: 16px; line-height: 1.6;">Our network is supported by advertisements. To access your dashboard and claim rewards, you must completely disable your Ad Blocker or whitelist our domain.</p>
+        <button onclick="window.location.reload()" style="margin-top: 25px; padding: 12px 30px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">I have disabled it, Refresh</button>
+      </div>
+    </div>
+    <div id="layout-wrapper" class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+         <!-- SIDEBAR MENU -->
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="/admin/dashboard" class="app-brand-link">
+              <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Fluwentcash</span>
+            </a>
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+          <div class="menu-inner-shadow"></div>
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="/admin/dashboard" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div>Dashboard</div>
+              </a>
+            </li>
+            
+            <!-- Manage Users -->
+            <li class="menu-item">
+              <a href="/all-users" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>Manage Users</div>
+              </a>
+            </li>
+
+            <!-- ADD-OPTIONS Dropdown -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-plus-circle"></i>
+                <div>Add Options</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/addlinks" class="menu-link">
+                    <div>Add-Task</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/banner-ads" class="menu-link">
+                    <div>Banner-ADS</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/rewards" class="menu-link">
+                    <div>Reward-controls</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- CARD options Dropdown -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-card"></i>
+                <div>Card Options</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/admin/cards" class="menu-link">
+                    <div>Cards</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/cards/create" class="menu-link">
+                    <div>Create card</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/admin/card-stats" class="menu-link">
+                    <div>Card-start</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Link Task (Active) -->
+            <li class="menu-item">
+              <a href="/getlinks" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-link"></i>
+                <div>Link-Task</div>
+              </a>
+            </li>
+
+            <!-- IP Logs -->
+            <li class="menu-item">
+              <a href="/admin/ip-logs" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
+                <div>IP-logs</div>
+              </a>
+            </li>
+
+            <!-- OOFD Submit -->
+            <li class="menu-item">
+              <a href="/submitted-data" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div>OOFD-SUBMIT</div>
+              </a>
+            </li>
+
+            <!-- Send Message -->
+            <li class="menu-item">
+              <a href="/sendmailusers" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-envelope"></i>
+                <div>SendMessage</div>
+              </a>
+            </li>
+
+            <!-- Recent Trx -->
+            <li class="menu-item">
+              <a href="/recent-transactions" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-transfer"></i>
+                <div>RecentTrx</div>
+              </a>
+            </li>
+
+            <!-- Logout -->
+            <li class="menu-item">
+              <a href="/logout" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-log-out"></i>
+                <div>Logout</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+
+        <div class="layout-page">
+          <%- include('../partials/hhh') %>
+          
+          <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="/images/sett.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="/images/pro.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block">ADMIN</span>
+                            <small class="text-muted">Admin</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li>
+                      <a class="dropdown-item" href="/profile">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My profile</span>
+                      </a>
+                    </li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li>
+                      <a class="dropdown-item text-danger" href="/logout">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <% if (typeof success_msg !== 'undefined' && success_msg && success_msg.length > 0) { %>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  <%= success_msg %>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <% } %>
+              <% if (typeof error_msg !== 'undefined' && error_msg && error_msg.length > 0) { %>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <%= error_msg %>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              <% } %>
+
+              <div class="col-lg-10 mx-auto">
+                <div class="card shadow-sm">
+                  <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Create New Credit Card</h4>
+                  </div>
+                  <div class="card-body">
+                    <form action="/admin/cards/create" method="POST" class="needs-validation" novalidate>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="mb-3">
+                            <label for="cardNumber" class="form-label">
+                              <i class="fas fa-credit-card me-1"></i>Card Number
+                            </label>
+                            <div class="input-group">
+                              <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
+                              <input type="number" class="form-control" id="cardNumber" name="cardNumber" required placeholder="Enter unique card number">
+                            </div>
+                          </div>
+                          
+                          <div class="mb-3">
+                            <label for="amount" class="form-label">
+                              <i class="fas fa-dollar-sign me-1"></i>Card Amount value
+                            </label>
+                            <input type="number" class="form-control" id="amount" name="amount" required placeholder="e.g. 50">
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="displayAmount" class="form-label">
+                              <i class="fas fa-font me-1"></i>Display Text Amount
+                            </label>
+                            <input type="text" class="form-control" id="displayAmount" name="displayAmount" required placeholder="e.g. $50 Card / 500 V-bucks">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="mb-3">
+                            <label for="pointsRequired" class="form-label">
+                              <i class="fas fa-coins me-1"></i>Points Required
+                            </label>
+                            <input type="number" class="form-control" id="pointsRequired" name="pointsRequired" required placeholder="Points users need to spend">
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="totalRedemptions" class="form-label">
+                              <i class="fas fa-users me-1"></i>Max Total Redemptions Allowed
+                            </label>
+                            <input type="number" class="form-control" id="totalRedemptions" name="totalRedemptions" required placeholder="e.g. 100 max uses">
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="expiresAt" class="form-label">
+                              <i class="fas fa-calendar-times me-1"></i>Expiration Date (Optional)
+                            </label>
+                            <input type="date" class="form-control" id="expiresAt" name="expiresAt">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="mt-4 d-flex justify-content-between">
+                        <a href="/admin/cards" class="btn btn-outline-secondary">
+                          <i class="fas fa-arrow-left me-2"></i>Back to Card Management List
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                          <i class="fas fa-save me-2"></i>Create Card Panel
+                        </button>
+                      </div>
+                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="content-backdrop fade"></div>
+          </div>
+          
+          <%- include('../partials/footer') %>
+        </div>
+      </div>
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+
+    <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/assets/vendor/js/bootstrap.js"></script>
+    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/assets/vendor/js/menu.js"></script>
+    <script src="/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <script>
+      function placeholderProbe() {
+        return new Promise((resolve) => {
+          const testElement = document.createElement('div');
+          testElement.className = 'adsbygoogle adsbox pub_300x250 pub_300x250m pub_728x90 text-ad textAd';
+          testElement.style.position = 'absolute';
+          testElement.style.top = '-9999px';
+          testElement.style.left = '-9999px';
+          testElement.style.width = '1px';
+          testElement.style.height = '1px';
+          testElement.style.opacity = '0';
+          testElement.style.pointerEvents = 'none';
+          document.body.appendChild(testElement);
+          const rect = testElement.getBoundingClientRect();
+          const style = window.getComputedStyle(testElement);
+          const blocked =
+            style.display === 'none' ||
+            style.visibility === 'hidden' ||
+            rect.width === 0 ||
+            rect.height === 0;
+          testElement.remove();
+          resolve(blocked);
+        });
+      }
+      function networkProbe() {
+        return new Promise((resolve) => {
+          const script = document.createElement('script');
+          const cleanup = () => {
+            if (script.parentNode) {
+              script.parentNode.removeChild(script);
+            }
+          };
+          const timer = window.setTimeout(() => {
+            cleanup();
+            resolve(false);
+          }, 600);
+          script.async = true;
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?cb=' + Date.now();
+          script.onload = () => {
+            window.clearTimeout(timer);
+            cleanup();
+            resolve(false);
+          };
+          script.onerror = () => {
+            window.clearTimeout(timer);
+            cleanup();
+            resolve(true);
+          };
+          document.head.appendChild(script);
+        });
+      }
+      function handleAdBlocker() {
+        document.getElementById("adblock-overlay").style.display = "block";
+        const dashboardContent = document.getElementById("layout-wrapper");
+        if (dashboardContent) {
+          dashboardContent.style.display = "none";
+        }
+      }
+      window.addEventListener('DOMContentLoaded', async function() {
+        const placeholderBlocked = await placeholderProbe();
+        const adRequestBlocked = await networkProbe();
+        
+        if (placeholderBlocked || adRequestBlocked) {
+          handleAdBlocker();
+        }
+      });
+    </script>
+  </body>
+</html>
+
+

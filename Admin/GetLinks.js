@@ -25,7 +25,8 @@ router.get("/getlinks", isAdmin, async (req, res) => {
     data,
     search,
     currentPage: parseInt(page),
-    totalPages: Math.ceil(total / limit)
+    totalPages: Math.ceil(total / limit),
+    appName: process.env.APP_NAME
   });
 });
 

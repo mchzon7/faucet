@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+   <title><%= title ? title : appName %></title>
+
+    <meta name="description" content="" />
+
+    <link rel="icon" type="image/x-icon" href="/images/kkk.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght=0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+    <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <script src="/assets/vendor/js/helpers.js"></script>
+    <script src="/assets/js/config.js"></script>
+  </head>
+
+  <body>
+
+      <!-- ADBLOCKER OVERLAY -->
+<div id="adblock-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh; font-family: sans-serif;">
+  <div style="max-width: 500px; margin: 0 auto; background: #222; padding: 40px; border-radius: 8px; border: 1px solid #ff4444;">
+    <h2 style="color: #ff4444; margin-bottom: 20px;">Ad Blocker Detected!</h2>
+    <p style="font-size: 16px; line-height: 1.6;">Our network is supported by advertisements. To access your dashboard and claim rewards, you must completely disable your Ad Blocker or whitelist our domain.</p>
+    <button onclick="window.location.reload()" style="margin-top: 25px; padding: 12px 30px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">I have disabled it, Refresh</button>
+  </div>
+</div>
+<!-- /ADBLOCKER OVERLAY -->
+    
+<div id="layout-wrapper" class="layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="/" class="app-brand-link">
+              <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
+              <span class="app-brand-text demo menu-text fw-bolder ms-2"><%= appName %></span>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item active">
+              <a href="/dashboard" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Dashboard</div>
+              </a>
+            </li>
+
+            <!-- Menu -->
+            <li class="menu-item active open">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="bx bx-list-ul"></i>
+                <div data-i18n="Layouts">Faucet List</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item active">
+                  <a href="/math" class="menu-link">
+                    <i class="bx bx-calculator"></i>
+                    <div data-i18n="Without menu">Solve</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/typing-captcha" class="menu-link">
+                    <i class="bx bx-font-family"></i>
+                    <div data-i18n="Without navbar">Type</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/ptc3" class="menu-link">
+                    <i class="bx bx-link"></i>
+                    <div data-i18n="Container">Shortlink</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/page1" class="menu-link">
+                    <i class="bx bx-layout"></i>
+                    <div data-i18n="Fluid">Page</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="bx bx-book-open"></i>
+                <div data-i18n="Layouts">Offerwall</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/timewall" class="menu-link">
+                    <i class="bx bx-timer"></i>
+                    <div data-i18n="Without menu">Timewall</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="/complete-task" class="menu-link">
+                    <i class="bx bx-calendar"></i>
+                    <div data-i18n="Fluid">Daily-task</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item">
+                  <a href="/available-cards" class="menu-link">
+                    <i class="bx bx-gift"></i>
+                    <div data-i18n="Blank">Reward cards</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+              <a href="/convert" class="menu-link">
+                <i class="bx bx-refresh"></i>
+                <div data-i18n="Blank">Convert Points</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="/rcontest" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-trophy"></i>
+                <div data-i18n="Blank">Weekly Event</div>
+              </a>
+            </li>
+            <li class="menu-item">
+                  <a href="/referral" class="menu-link">
+                    <i class="bx bx-group"></i>
+                    <div data-i18n="Blank">Referrals</div>
+                  </a>
+                </li>
+            <li class="menu-item">
+                  <a href="/withdrawal" class="menu-link">
+                    <i class="bx bx-wallet-alt"></i>
+                    <div data-i18n="Blank">Withdrawal</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+              <a
+                href="/contact"
+                class="menu-link"
+              >
+                <i class="menu-icon tf-icons bx bx-support"></i>
+                <div data-i18n="Support">Support</div>
+              </a>
+            </li>
+              <!-- mmmmm-->
+          </ul>
+        </aside>
+
+        <div class="layout-page">
+          <%- include('../partials/othererror') %>
+        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
+          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse"></div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+            
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
+                
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="/images/sett.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="/images/pro.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block"><%= user.username %>!</span>
+                            <small class="text-muted">Username</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/profile">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/logout">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+
+      <div class="content-wrapper">
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-12 col-lg-3 text-center d-flex flex-column gap-4">
+        <div class="sticky-top" style="top: 20px; z-index: 10;">
+          <span class="text-muted small d-block mb-1">Advertisement</span>
+          
+          <% if (banners && banners.length > 0) { %>
+            <% banners.forEach(ad => { %>
+              <div class="banner mb-3">
+                <a href="/ad/click/<%= ad._id %>" target="_blank">
+                  <img src="<%= ad.imageUrl %>" class="img-fluid rounded border mb-2" style="max-width:250px;" />
+                </a>
+              </div>
+            <% }) %>
+          <% } %>
+
+          <div class="d-flex justify-content-center">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : 'e408764fee9aa61f98a2f598a18be3d3',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/e408764fee9aa61f98a2f598a18be3d3/invoke.js"></script>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+
+        <div class="text-center mb-4">
+          <span class="text-muted small d-block mb-1">Advertisement</span>
+          <iframe src="https://ad2bitcoin.com/ad.php?ref=Chizon7&width=728" marginwidth="0" marginheight="0" width="320" height="50" scrolling="no" border="0" frameborder="0"></iframe>
+          
+          <script type="text/javascript">
+            atOptions = {
+              'key' : '3112402d8221129e5e8824ec08cbc415',
+              'format' : 'iframe',
+              'height' : 90,
+              'width' : 728,
+              'params' : {}
+            };
+          </script>
+          <script src="https://www.highperformanceformat.com/3112402d8221129e5e8824ec08cbc415/invoke.js"></script>
+        </div>
+
+        <div class="captcha-card shadow-sm p-4 bg-white rounded border mb-4">
+          <form action="/solve-captcha" method="POST">
+            
+
+            <div class="text-center mb-3">
+              <h6>Your Balance: <span id="balance" class="fw-bold text-success"><%= user.balance.toFixed(2) %></span></h6>
+            </div>
+
+            <div class="text-center mb-2 bg-light py-2 rounded border border-dashed">
+              <span class="form-label fw-semibold fs-5">Solve: <%= a %> + <%= b %></span>
+            </div>
+            <input type="hidden" name="captchaToken" value="<%=captchaToken%>"/>
+            
+            <input type="text" class="form-control mt-2 mb-4 mx-auto text-center fs-5" style="max-width: 304px;" name="answer" placeholder="Your answer" required autocomplete="off">
+            
+            <div class="h-captcha d-flex justify-content-center mb-3" data-sitekey="e3e20fc8-8e30-4240-8c94-2282825260b2"></div>
+            <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+            <div class="text-center">
+              <button id="submit-mth" type="submit" class="btn btn-primary w-50 fw-semibold py-2 shadow-sm">Submit Answer</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="text-center my-4 py-3 border-top border-bottom bg-light">
+          <span class="text-muted small d-block mb-1">Sponsored Content</span>
+<iframe src="https://ad2bitcoin.com/ad.php?ref=Chizon7&width=728" marginwidth="0" marginheight="0" width="320" height="60" scrolling="no" border="0" frameborder="0"></iframe>
+          <iframe src="/ads" marginwidth="0" marginheight="0" width="320" height="50" scrolling="no" border="0" frameborder="0"></iframe>
+        </div>
+
+        <div class="text-center mt-4">
+          <span class="text-muted small d-block mb-1">Advertisement</span>
+          <script async="async" data-cfasync="false" src="//pl26969558.profitableratecpm.com/664af624c2362a648958bc24f9fde84c/invoke.js"></script>
+          <div id="container-664af624c2362a648958bc24f9fde84c"></div>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-lg-3 text-center d-flex flex-column gap-4">
+        <div class="sticky-top" style="top: 20px; z-index: 10;">
+          <span class="text-muted small d-block mb-1">Advertisement</span>
+          
+          <% if (banners && banners.length > 0) { %>
+            <% banners.forEach(ad => { %>
+              <div class="banner mb-3">
+                <a href="/ad/click/<%= ad._id %>" target="_blank">
+                  <img src="<%= ad.imageUrl %>" class="img-fluid rounded border mb-2" style="max-width:250px;" />
+                </a>
+              </div>
+            <% }) %>
+          <% } %>
+
+          <div class="d-flex justify-content-center">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : 'e408764fee9aa61f98a2f598a18be3d3',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/e408764fee9aa61f98a2f598a18be3d3/invoke.js"></script>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <%- include('../partials/newfoot') %>
+</div>
+
+         
+
+
+        </div>
+
+  </div>
+  <div class="layout-overlay layout-menu-toggle"></div>
+  
+</div>
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+     <script src="https://cdn.tailwindcss.com"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/assets/vendor/js/bootstrap.js"></script>
+    <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+    <!-- Main JS -->
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="/assets/js/dashboards-analytics.js"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- INTEGRATED ADBLOCK ENGINE -->
+    <script>
+      function placeholderProbe() {
+        return new Promise((resolve) => {
+          const testElement = document.createElement('div');
+          testElement.className = 'adsbygoogle adsbox pub_300x250 pub_300x250m pub_728x90 text-ad textAd';
+          testElement.style.position = 'absolute';
+          testElement.style.top = '-9999px';
+          testElement.style.left = '-9999px';
+          testElement.style.width = '1px';
+          testElement.style.height = '1px';
+          testElement.style.opacity = '0';
+          testElement.style.pointerEvents = 'none';
+          document.body.appendChild(testElement);
+
+          const rect = testElement.getBoundingClientRect();
+          const style = window.getComputedStyle(testElement);
+          const blocked =
+            style.display === 'none' ||
+            style.visibility === 'hidden' ||
+            rect.width === 0 ||
+            rect.height === 0;
+
+          testElement.remove();
+          resolve(blocked);
+        });
+      }
+
+      function networkProbe() {
+        return new Promise((resolve) => {
+          const script = document.createElement('script');
+          const cleanup = () => {
+            if (script.parentNode) {
+              script.parentNode.removeChild(script);
+            }
+          };
+
+          const timer = window.setTimeout(() => {
+            cleanup();
+            resolve(false);
+          }, 600);
+
+          script.async = true;
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?cb=' + Date.now();
+          script.onload = () => {
+            window.clearTimeout(timer);
+            cleanup();
+            resolve(false);
+          };
+          script.onerror = () => {
+            window.clearTimeout(timer);
+            cleanup();
+            resolve(true);
+          };
+
+          document.head.appendChild(script);
+        });
+      }
+
+      function handleAdBlocker() {
+        document.getElementById("adblock-overlay").style.display = "block";
+        const dashboardContent = document.getElementById("layout-wrapper");
+        if (dashboardContent) {
+          dashboardContent.style.display = "none";
+        }
+      }
+
+      window.addEventListener('DOMContentLoaded', async function() {
+        const placeholderBlocked = await placeholderProbe();
+        const adRequestBlocked = await networkProbe();
+        
+        if (placeholderBlocked || adRequestBlocked) {
+          handleAdBlocker();
+        }
+      });
+    </script>
+    <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    const submitBtn = document.getElementById('submit-mth');
+    const form = submitBtn ? submitBtn.closest('form') : null;
+    const cooldownTime = 1 * 60 * 1000; // 3 minutes in milliseconds
+
+    if (!submitBtn || !form) return;
+
+    function checkCooldown() {
+      const lastSubmit = localStorage.getItem('captcha_last_submit');
+      
+      if (lastSubmit) {
+        const elapsed = Date.now() - parseInt(lastSubmit, 10);
+        
+        if (elapsed < cooldownTime) {
+          const remaining = cooldownTime - elapsed;
+          submitBtn.disabled = true;
+
+          // Calculate remaining minutes and seconds
+          const secondsLeft = Math.ceil(remaining / 1000);
+          const minutes = Math.floor(secondsLeft / 60);
+          const seconds = secondsLeft % 60;
+          
+          // Format seconds with leading zero if needed
+          const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+          
+          // Update button text with the countdown
+          submitBtn.textContent = `Wait ${minutes}:${formattedSeconds}`;
+
+          // Check again in 1 second
+          setTimeout(checkCooldown, 1000);
+          return;
+        }
+      }
+      
+      // Re-enable button once cooldown has passed
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit Answer";
+    }
+
+    // Capture the click/submit action to initiate the cooldown
+    form.addEventListener('submit', function() {
+      localStorage.setItem('captcha_last_submit', Date.now().toString());
+    });
+
+    // Run the check on page load
+    checkCooldown();
+  });
+</script>
+  </body>
+</html>

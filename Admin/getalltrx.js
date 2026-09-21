@@ -21,7 +21,8 @@ router.get("/recent-transactions", isAdmin, async (req, res) => {
     res.render("getalltrx.ejs", {
       transactions,
       currentPage: page,
-      totalPages: Math.ceil(totalTransactions / limit)
+      totalPages: Math.ceil(totalTransactions / limit),
+      appName: process.env.APP_NAME
     });
   } catch (err) {
     console.error("Error loading transactions:", err);
