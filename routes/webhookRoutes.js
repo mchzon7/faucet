@@ -116,8 +116,6 @@ router.all(['/api/webhooks/timewall', '/postback/timewall'],protect, async (req,
       if (error && error.code === 11000) return res.status(200).send('1');
       throw error;
     }
-    updatedUser.totalActivity += 1;
-    await updatedUser.save();
     console.log(`SUCCESS: Applied ${pointsToApply} points to user ${userId}; transaction ${externalTxId}.`);
     return res.status(200).send('1');
   } catch (error) {
