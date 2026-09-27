@@ -296,6 +296,7 @@
                                 <th>User</th>
                                 <th>Referral Code</th>
                                 <th>Weekly Referrals</th>
+                                <th>Referrals Activities</th>
                                 <th>Est. Reward</th>
                               </tr>
                             </thead>
@@ -317,6 +318,7 @@
                                   <td><%= user.name %></td>
                                   <td><code><%= user.username %></code></td>
                                   <td><strong><%= user.weeklyReferrals %></strong></td>
+                                  <td><strong><%= user.referralActivities %></strong></td>
                                   <td class="reward"><%= getEstimatedReward(rank) %></td>
                                 </tr>
                               <% }); %>

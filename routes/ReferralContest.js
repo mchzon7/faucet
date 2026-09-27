@@ -45,14 +45,16 @@ router.get('/rcontest',protect, async (req, res) => {
       .sort({ weeklyReferrals: -1 })
       .limit(10);
 
+    const referralActivities = await User.find({referrer: req.user._id}).sort({ totalActivity: -1 }).lean();
     res.render('../views/new/rcontest', { 
       topUsers, 
       getEstimatedReward,
       title: 'Convert Points',
-      appName: 'luwentcash',
+      appName: 'fluwentcash',
       error: null,
       user: user,
-      success: null 
+      success: null,
+      referralActivities: referralActivities
     });
   } catch (err) {
     res.status(500).send('Server Error: ' + err.message);

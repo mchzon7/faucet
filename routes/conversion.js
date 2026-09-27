@@ -35,7 +35,7 @@ router.post('/convert',protect, async (req, res) => {
     if (!points || isNaN(points) || points <= 0 || !Number.isInteger(points)) {
       return res.render('../views/new/convert', {
         title: 'Convert Points',
-        appName: 'Fluwent',
+        appName: 'Fluwentcash',
         user: user,
         error: 'Please enter a valid whole number of points.',
         success: null
@@ -45,7 +45,7 @@ router.post('/convert',protect, async (req, res) => {
     if (points < MIN_POINTS) {
       return res.render('../views/new/convert', {
         title: 'Convert Points',
-        appName: 'Fluwent',
+        appName: 'Fluwentcash',
         user: user,
         error: `You need at least ${MIN_POINTS} points to convert.`,
         success: null
@@ -55,7 +55,7 @@ router.post('/convert',protect, async (req, res) => {
     if (user.points < points) {
       return res.render('../views/new/convert', {
         title: 'Convert Points',
-        appName: 'Fluwent',
+        appName: 'Fluwentcash',
         user: user,
         error: 'You do not have enough points for this conversion.',
         success: null
@@ -79,7 +79,7 @@ router.post('/convert',protect, async (req, res) => {
 
     return res.render('../views/new/convert', {
       title: 'Convert Points',
-      appName: 'Fluwent',
+      appName: 'Fluwentcash',
       user: updatedUser,
       error: null,
       success: `Successfully converted ${points} points to $${usdtAmount.toFixed(4)} USDT!`
