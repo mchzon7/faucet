@@ -45,7 +45,6 @@ router.get('/rcontest',protect, async (req, res) => {
       .sort({ weeklyReferrals: -1 })
       .limit(10);
 
-    const referralActivities = await User.find({referrer: req.user._id}).sort({ totalActivity: -1 }).lean();
     res.render('../views/new/rcontest', { 
       topUsers, 
       getEstimatedReward,
@@ -53,8 +52,7 @@ router.get('/rcontest',protect, async (req, res) => {
       appName: 'fluwentcash',
       error: null,
       user: user,
-      success: null,
-      referralActivities: referralActivities
+      success: null
     });
   } catch (err) {
     res.status(500).send('Server Error: ' + err.message);

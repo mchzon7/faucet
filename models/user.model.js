@@ -108,6 +108,6 @@ const userSchema = new mongoose.Schema({
 }
 );
 
-const sss = mongoose.model("seemani", userSchema);
+const sss = mongoose.model("smani", userSchema);
 
 module.exports = sss;
