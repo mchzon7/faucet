@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 const User = require('../models/user.model');
 const PointLog = require('../models/PointLog');
+const { protect } = require('../middleware/auth');
 
 const router = express.Router();
 
