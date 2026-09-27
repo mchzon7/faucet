@@ -3,12 +3,8 @@ const crypto = require('crypto');
 const mongoose = require('mongoose');
 const User = require('../models/user.model');
 const PointLog = require('../models/PointLog');
-const {protect } = require('../middleware/auth');
 
 const router = express.Router();
-
-
-router.get("/timewall", protect, (req, res) => res.render("../views/new/timewall.ejs", { user: req.user._id, title: 'FluwentCash', appName: process.env.APP_NAME }));
 
 const ALLOWED_TIMEWALL_IPS = new Set([
   '18.156.132.55',
@@ -29,7 +25,7 @@ function getRequestIps(req) {
   return addresses.map(normalizeIp).filter(Boolean);
 }
 
-router.all(['/api/webhooks/timewall', '/postback/timewall'],protect, async (req, res) => {
+router.all(['/api/webhooks/timewall', '/postback/timewall'], async (req, res) => {
   try {
     // Timewall can send values in the URL query string or as a form body.
     const payload = { ...req.body, ...req.query };
@@ -116,6 +112,7 @@ router.all(['/api/webhooks/timewall', '/postback/timewall'],protect, async (req,
       if (error && error.code === 11000) return res.status(200).send('1');
       throw error;
     }
+
     console.log(`SUCCESS: Applied ${pointsToApply} points to user ${userId}; transaction ${externalTxId}.`);
     return res.status(200).send('1');
   } catch (error) {
