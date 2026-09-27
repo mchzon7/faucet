@@ -24,10 +24,24 @@
 </head>
 <body>
 
-  <h2>Wait for <span id="timer">10</span> seconds to get rewarded.</h2>
+
+          <div class="card bg-[#595cd9]/15 text-white border-secondary p-3 shadow-sm">
+                <h2>Wait for <span id="timer">10</span> seconds to get rewarded.</h2>
+                <div style="min-height: 1000px; width: 100%;">
+                  <iframe
+                    id="iframe-container"
+                    sandbox="allow-scripts allow-same-origin" 
+                    src="<%= url %>" 
+                    frameborder="0" 
+                    width="400%" 
+                    height="1000" 
+                    scrolling="auto"
+                    style="background: #ffffff; border-radius: 8px;">
+                  </iframe>
+                </div>
+              </div>
 
   <!-- Display the website in an iframe -->
-  <iframe id="iframe-container" src="<%= url %>" sandbox="allow-scripts allow-same-origin"></iframe>
 
   <script>
     let timeLeft = 10;

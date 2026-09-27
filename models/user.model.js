@@ -88,6 +88,8 @@ const userSchema = new mongoose.Schema({
 
     totalRefEarned: {type: Number, default: 0},
 
+    totalActivity: {type: Number, default: 0},
+
     level: {type: Number, default: 1},
 
     page1: {type: Boolean, default: false},

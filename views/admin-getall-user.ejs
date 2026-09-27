@@ -254,11 +254,13 @@
                           <thead>
                             <tr>
                               <th>Name</th>
+                              <th>Username</th>
                               <th>Email</th>
                               <th>Verified</th>
                               <th>Referrer</th>
                               <th>Blocked</th>
                               <th>Registration Date</th>
+                              <th>Total Activity</th>
                               <th>Balance</th>
                               <th>Actions</th>
                             </tr>
@@ -266,12 +268,13 @@
                           <tbody class="table-border-bottom-0">
                             <% if (users.length===0) { %>
                               <tr>
-                                <td colspan="8" class="text-center py-4">No users found.</td>
+                                <td colspan="10" class="text-center py-4">No users found.</td>
                               </tr>
                             <% } else { %>
                               <% users.forEach(user=> { %>
                                 <tr>
                                   <td><strong><%= user.name %></strong></td>
+                                  <td><%= user.username %></td>
                                   <td><%= user.email %></td>
                                   <td>
                                     <span class="badge bg-label-<%= user.isVerified ? 'success' : 'danger' %>">
@@ -285,6 +288,7 @@
                                     </span>
                                   </td>
                                   <td><%= new Date(user.createdAt).toLocaleString() %></td>
+                                  <td><span class="text-info fw-semibold"><%= user.totalActivity %></span></td>
                                   <td><span class="text-primary fw-semibold"><%= user.balance.toFixed(4) %> USDT</span></td>
                                   <td>
                                     <div class="d-flex gap-2">
