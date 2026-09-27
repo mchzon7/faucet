@@ -6,6 +6,8 @@ const PointLog = require('../models/PointLog');
 
 const router = express.Router();
 
+router.get("/timewall", protect, (req, res) => res.render("../views/new/timewall.ejs", { user: req.user._id, title: 'FluwentCash', appName: process.env.APP_NAME }));
+
 const ALLOWED_TIMEWALL_IPS = new Set([
   '18.156.132.55',
   '51.81.120.73',
