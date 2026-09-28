@@ -98,7 +98,7 @@ router.all(['/api/webhooks/timewall', '/postback/timewall'], async (req, res) =>
 
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { $inc: { points: pointsToApply } },
+      { $inc: { points: pointsToApply, totalActivity: 1 } },
       { new: true, runValidators: true }
     );
     if (!updatedUser) return res.status(200).send('ERROR_USER_NOT_FOUND');
@@ -115,8 +115,7 @@ router.all(['/api/webhooks/timewall', '/postback/timewall'], async (req, res) =>
       if (error && error.code === 11000) return res.status(200).send('1');
       throw error;
     }
-    updatedUser.totalActivity += 1;
-    await updatedUser.save();
+
     console.log(`SUCCESS: Applied ${pointsToApply} points to user ${userId}; transaction ${externalTxId}.`);
     return res.status(200).send('1');
   } catch (error) {
