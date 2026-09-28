@@ -98,7 +98,7 @@ router.all(['/api/webhooks/timewall', '/postback/timewall'], async (req, res) =>
 
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { $inc: { points: pointsToApply } },
+      { $inc: { points: pointsToApply, totalActivity: 1 } },
       { new: true, runValidators: true }
     );
     if (!updatedUser) return res.status(200).send('ERROR_USER_NOT_FOUND');
