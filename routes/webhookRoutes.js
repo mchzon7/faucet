@@ -28,7 +28,7 @@ function getRequestIps(req) {
   return addresses.map(normalizeIp).filter(Boolean);
 }
 
-router.all(['/api/webhooks/timewall', '/postback/timewall'], async (req, res) => {
+router.all(['/api/webhooks/timewall', '/postback/timewall'],protect, async (req, res) => {
   try {
     // Timewall can send values in the URL query string or as a form body.
     const payload = { ...req.body, ...req.query };
