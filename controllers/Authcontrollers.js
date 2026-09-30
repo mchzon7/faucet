@@ -13,6 +13,9 @@ const axios = require("axios");
 
 router.get('/', homeController.getHomePage);
 router.get('/blog', blogController.getBlogIndex);
+router.get('/refresh', (req, res) => {
+    res.render('../views/new/refreshpage');
+});
 
 // Helper function to check if an IP is a VPN/Proxy
 async function isVpnOrProxy(ip) {

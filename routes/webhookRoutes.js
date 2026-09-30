@@ -7,7 +7,9 @@ const { protect } = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get("/timewall", protect, (req, res) => res.render("../views/new/timewall.ejs", { user: req.user._id, title: 'FluwentCash', appName: process.env.APP_NAME }));
+router.get("/timewall", protect, async (req, res) => { 
+  const user = await User.findById(req.user._id);
+  res.render("../views/new/timewall.ejs", { user: user, title: 'FluwentCash', appName: process.env.APP_NAME }) });
 
 const ALLOWED_TIMEWALL_IPS = new Set([
   '18.156.132.55',

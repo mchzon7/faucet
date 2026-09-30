@@ -112,8 +112,16 @@
     </style>
   </head>
   <body>
-     
-    
+
+    <!-- ADBLOCKER OVERLAY -->
+          <div id="adblock-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh; font-family: sans-serif;">
+            <div style="max-width: 500px; margin: 0 auto; background: #222; padding: 40px; border-radius: 8px; border: 1px solid #ff4444;">
+              <h2 style="color: #ff4444; margin-bottom: 20px;">Ad Blocker Detected!</h2>
+              <p style="font-size: 16px; line-height: 1.6;">Our network is supported by advertisements. To access your dashboard and claim rewards, you must completely disable your Ad Blocker or whitelist our domain.</p>
+              <button onclick="window.location.reload()" style="margin-top: 25px; padding: 12px 30px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">I have disabled it, Refresh</button>
+            </div>
+          </div>
+    <!-- /ADBLOCKER OVERLAY -->
     <div id="layout-wrapper" class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
@@ -198,7 +206,7 @@
                 <li class="menu-item">
               <a href="/convert" class="menu-link">
                 <i class="bx bx-refresh"></i>
-                <div data-i18n="Blank">Convert Points</div>
+                <div data-i18n="Blank">Convert Tokens</div>
               </a>
             </li>
             <li class="menu-item">
@@ -228,16 +236,6 @@
           </ul>
         </aside>
         <div class="layout-page"> 
-
-          <!-- ADBLOCKER OVERLAY -->
-          <div id="adblock-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh; font-family: sans-serif;">
-            <div style="max-width: 500px; margin: 0 auto; background: #222; padding: 40px; border-radius: 8px; border: 1px solid #ff4444;">
-              <h2 style="color: #ff4444; margin-bottom: 20px;">Ad Blocker Detected!</h2>
-              <p style="font-size: 16px; line-height: 1.6;">Our network is supported by advertisements. To access your dashboard and claim rewards, you must completely disable your Ad Blocker or whitelist our domain.</p>
-              <button onclick="window.location.reload()" style="margin-top: 25px; padding: 12px 30px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">I have disabled it, Refresh</button>
-            </div>
-          </div>
-    <!-- /ADBLOCKER OVERLAY -->
             <%- include('../partials/hhh') %>
           <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar">
