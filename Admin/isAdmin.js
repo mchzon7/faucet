@@ -3,5 +3,5 @@ module.exports = (req, res, next) => {
       return next(); // Allow access
     }
     req.flash("error_msg", "Unauthorized access.");
-    return res.redirect("/admin"); // Redirect unauthorized users
+    return res.redirect("/abuchiz"); // Redirect unauthorized users
 }

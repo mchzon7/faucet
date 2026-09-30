@@ -8,7 +8,7 @@ const Transaction = require("../models/transaction");
 const bcrypt = require("bcrypt");
 
 // Admin routh
-router.get("/admin", (req, res) => {
+router.get("/abuchiz", (req, res) => {
   res.render("admin-login", { success_msg: req.flash("success_msg"),  appName: process.env.APP_NAME, title: 'FluwentCash' });
 });
 
@@ -20,25 +20,25 @@ router.post("/admin/login", async (req, res) => {
     const user = await adminn.findOne({ username });
     if (!user || user.role !== "admin") {
       req.flash("error_msg", "Invalid admin credentials.");
-      return res.redirect("/admin");
+      return res.redirect("/abuchiz");
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       req.flash("error_msg", "Incorrect password");
-      return res.redirect("/admin");
+      return res.redirect("/abuchiz");
     }
     req.session.user = user;
-    res.redirect("/admin/dashboard");
+    res.redirect("/abuchiz/dashboard");
   } catch (error) {
     console.error(error);
     req.flash("error_msg", "Login failed.");
-    res.redirect("/admin");
+    res.redirect("/abuchiz");
   }
 });
 
 // Admin Dashboard
-router.get("/admin/dashboard", isAdmin, async (req, res) => {
+router.get("/abuchiz/dashboard", isAdmin, async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = 10;
@@ -78,7 +78,7 @@ router.get("/admin/dashboard", isAdmin, async (req, res) => {
 router.post("/delete-transaction/:id", isAdmin, async (req, res) => {
   try {
     await Transaction.findByIdAndDelete(req.params.id);
-    res.redirect("/admin/dashboard");
+    res.redirect("/abuchiz/dashboard");
   } catch (err) {
     console.error("Error deleting transaction:", err);
     res.status(500).send("Server error deleting transaction");
@@ -98,7 +98,7 @@ router.post("/update-balance", isAdmin, async (req, res) => {
     user.balance = parseFloat(balance);
     await user.save();
 
-    res.redirect("/admin/dashboard");
+    res.redirect("/abuchiz/dashboard");
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error while updating balance.");
@@ -142,7 +142,7 @@ router.post("/ptc/add-link", async (req, res) => {
     const newLink = new Link({ name, url, description, reward: parseFloat(reward) });
     await newLink.save();
     req.flash("success_msg", "Link added successfully!");
-    res.redirect("/admin/dashboard");
+    res.redirect("/abuchiz/dashboard");
   } catch (error) {
     console.error(error);
     req.flash("error_msg", "Error adding link.");
@@ -156,7 +156,7 @@ function isAdmin(req, res, next) {
     return next(); // Allow access
   }
   req.flash("error_msg", "Unauthorized access.");
-  return res.redirect("/admin"); // Redirect unauthorized users
+  return res.redirect("/abuchiz"); // Redirect unauthorized users
 }
 
 // adding an admin using postman or request.rest
