@@ -31,10 +31,10 @@ const users = [
 
 const payouts = [
   { username: 'mika_earn', amount: 7.25, currency: 'USD', method: 'FaucetPay', paidAt: new Date(Date.now() - 8 * 60 * 1000) },
-  { username: 'cashpilot', amount: 18.9, currency: 'USD', method: 'Paystack', paidAt: new Date(Date.now() - 18 * 60 * 1000) },
-  { username: 'web3nora', amount: 4.6, currency: 'USD', method: 'USDT', paidAt: new Date(Date.now() - 33 * 60 * 1000) },
+  { username: 'cashpilot', amount: 18.9, currency: 'USD', method: 'FaucetPay', paidAt: new Date(Date.now() - 18 * 60 * 1000) },
+  { username: 'web3nora', amount: 4.6, currency: 'USD', method: 'FaucetPay', paidAt: new Date(Date.now() - 33 * 60 * 1000) },
   { username: 'taskmax', amount: 12.15, currency: 'USD', method: 'FaucetPay', paidAt: new Date(Date.now() - 52 * 60 * 1000) },
-  { username: 'gainloop', amount: 22.4, currency: 'USD', method: 'Binance Pay', paidAt: new Date(Date.now() - 73 * 60 * 1000) }
+  { username: 'gainloop', amount: 22.4, currency: 'USD', method: 'FaucetPay', paidAt: new Date(Date.now() - 73 * 60 * 1000) }
 ];
 
 const posts = [
