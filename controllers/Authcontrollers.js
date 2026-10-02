@@ -251,7 +251,7 @@ router.post("/forgot-password", async (req, res) => {
         });
 
         req.flash("success_msg", "Check your email for reset link");
-        res.redirect("/login");
+        res.redirect("/forgotpassword");
     } catch (error) {
         console.error("Email sending failed:", error);
         return res.render("../views/new/forgotpassword", { error_msg: "Failed to send reset email. Try again later." });
