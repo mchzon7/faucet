@@ -216,7 +216,7 @@ router.post("/forgot-password", async (req, res) => {
     user.resetPasswordExpAt = Date.now() + 3600000; // 1 hour expiration
     await user.save();
 
-    const resetLink = `http://localhost:8000/reset-password/${token}`;
+    const resetLink = `https://fluwentcash.online/reset-password/${token}`;
 
     // Professional HTML Email Template
     const emailHtml =`
