@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/user.model");
 const transpoter = require("./nodemailer");
 const { protect } = require("../middleware/auth");
+const { Resend } = require("resend");
 
 // Setup your mailer (use your real SMTP credentials or a service like SendGrid)
 
@@ -17,6 +18,7 @@ router.post("/send-otp",protect, async (req, res) => {
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
   const otpExpires = new Date(Date.now() + 10 * 60 * 1000); // 10 mins
   const userId = user;
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     const user = await User.findById(userId);
@@ -29,7 +31,7 @@ router.post("/send-otp",protect, async (req, res) => {
     user.otpExpires = otpExpires;
     await user.save();
 
-    await transpoter.sendMail({
+    await resend.emails.send({
       from: process.env.SENDER_EMAIL,
       to: user.email,
       subject: "Your Verification OTP - Secure Access",
@@ -153,11 +155,12 @@ router.get("/contact",protect, async (req, res) => {
   const user = await User.findById(req.user._id);
   if(!user) return res.redirect("/login");
   const { name, email, subject, message } = req.body;
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     const mailOptions = {
-      from: email,
-      to: process.env.SENDER_EMAIL,
+      from: process.env.SENDER_EMAIL,
+      to: process.env.RECEVER_EMAIL,
       subject:` Contact Us - ${subject}`,
       html:` 
         <!DOCTYPE html>
@@ -224,7 +227,7 @@ router.get("/contact",protect, async (req, res) => {
         </html>
       `,
     };
- await transpoter.sendMail(mailOptions);
+ await resend.emails.send(mailOptions);
     res.render("../views/new/contact", {success_msg: "Your message has been submitted successfully!", user, appName: process.env.APP_NAME, title: 'FluwentCash' });
   } catch (error) {
     console.error(error);

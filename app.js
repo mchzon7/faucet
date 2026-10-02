@@ -61,7 +61,7 @@ app.use(
     })
 );
 app.use(cors({
-  origin: ['https://fluwentcash.online', 'https://www.fluwentcash.online', 'http://localhost:8000'], // Replace with your frontend URL
+  origin: ['https://fluwentcash.online', 'https://www.fluwentcash.online'], // Replace with your frontend URL
   credentials: true
 }));
 

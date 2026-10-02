@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require("../models/user.model");
 const transporter = require("../controllers/nodemailer"); // path to your mailer.js
 const isAdmin = require("./isAdmin");
+const { Resend } = require("resend");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Send email to all users
 router.get("/sendmailusers", isAdmin, (req, res) => res.render("sendmailtousers", {appName: process.env.APP_NAME}));
@@ -10,8 +12,8 @@ router.post("/mail/all", async (req, res) => {
   const { subject, message } = req.body;
   try {
     const users = await User.find({}, "email");
-    const sendPromises = users.map(user => {
-      return transporter.sendMail({
+    const sendPromises = users.map(async user => {
+      return await resend.emails.send({
         from: process.env.SENDER_EMAIL,
         to: user.email,
         subject: ` Fluwentcash - ${subject}`,
@@ -89,7 +91,7 @@ router.post("/mail/all", async (req, res) => {
 router.post("/mail/single", isAdmin, async (req, res) => {
   const { email, subject, message } = req.body;
   try {
-    await transporter.sendMail({
+    await resend.emails.send({
       from: process.env.SENDER_EMAIL,
       to: email,
       subject: ` Fluwentcash - ${subject}`,
@@ -153,7 +155,7 @@ router.post("/mail/single", isAdmin, async (req, res) => {
       `,
     });
 
-    req.flash(`Email sent to ${email} successfully`);
+    req.flash('success_msg', `Email sent to ${email} successfully`);
     return res.redirect("/sendmailusers");
   } catch (err) {
     console.error(err);

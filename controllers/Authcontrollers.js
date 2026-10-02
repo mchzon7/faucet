@@ -9,6 +9,7 @@ const transpoter = require("./nodemailer");
 const crypto = require("crypto");
 const router = express.Router();
 const axios = require("axios");
+const { Resend } = require("resend");
 
 
 router.get('/', homeController.getHomePage);
@@ -203,6 +204,9 @@ router.get('/logout', (req, res) => {
 
 router.get("/forgotpassword", (req, res) => res.render("../views/new/forgotpassword", {appName: process.env.APP_NAME, title: 'FluwentCash'}));
 
+// Initialize Resend with your API key
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 router.post("/forgot-password", async (req, res) => {
     const { email } = req.body;
     const user = await User.findOne({ email });
@@ -219,11 +223,11 @@ router.post("/forgot-password", async (req, res) => {
     const resetLink = `https://fluwentcash.online/reset-password/${token}`;
 
     // Professional HTML Email Template
-    const emailHtml =`
+    const emailHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
             <h2 style="color: #333333; text-align: center;">Password Reset Request</h2>
             <p style="color: #555555; font-size: 16px; line-height: 1.5;">
-                You requested a password reset for your <strong>CrashCash</strong> account. Click the button below to set a new password. This link will expire in 1 hour.
+                You requested a password reset for your <strong>FluwentCash</strong> account. Click the button below to set a new password. This link will expire in 1 hour.
             </p>
             <div style="text-align: center; margin: 30px 0;">
                 <a href="${resetLink}" style="background-color: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; display: inline-block;">
@@ -243,17 +247,17 @@ router.post("/forgot-password", async (req, res) => {
     `;
 
     try {
-        await transpoter.sendMail({
-            from: process.env.SENDER_EMAIL,
+        await resend.emails.send({
+            from: 'support@support.fluwentcash.online', // Use 'onboarding@resend.dev' for testing, or 'process.env.SENDER_EMAIL' after domain verification
             to: user.email,
             subject: "Password Reset Request",
-            html: emailHtml, // Passed the template string here
+            html: emailHtml,
         });
 
         req.flash("success_msg", "Check your email for reset link");
         res.redirect("/forgotpassword");
     } catch (error) {
-        console.error("Email sending failed:", error);
+        console.error("Resend Email sending failed:", error);
         return res.render("../views/new/forgotpassword", { error_msg: "Failed to send reset email. Try again later." });
     }
 });
