@@ -45,7 +45,7 @@ router.post("/withdraw",protect, async (req, res) => {
       return res.redirect("/withdrawal");
     }
 
-    if (amount < 3) {
+    if (amount < 1) {
       req.flash("error_msg", "The menimum withrawal is 3usd");
       return res.redirect("/withdrawal");
     }
@@ -59,7 +59,7 @@ router.post("/withdraw",protect, async (req, res) => {
       const user = await User.findById(userId);
       const apiKey = process.env.WithdrawKey;
       const to = wallet;
-      const amonn = parseInt(amount * 1);
+      const amonn = parseInt(amount * 100000000);
       const currency = "USDT";
 
       const data = new URLSearchParams();

@@ -238,51 +238,76 @@
           </nav>
                     
                     <div class="content-wrapper">
-                        <div class="container-xxl flex-grow-1 container-p-y">
-                            <div class="container py-5">
-                                <div class="row justify-content-center">
-                                    <div class="col-md-6">
-                                        <div class="captcha-card shadow-sm">
-                                            <h4 class="mb-4 text-center">Daily-Offer</h4>
-                                            <form action="/complete-task" method="POST">
-                                                <div class="mb-3">
-                                                    <div class="d-flex justify-content-center">
-                                                        <!-- Display flash messages -->
-                                                        <% if (success_msg) { %>
-                                                            <div style="color: green;">
-                                                                <%= success_msg %>
-                                                            </div>
-                                                            <% } %>
-                                                                <% if (error_msg) { %>
-                                                                    <div style="color: red;">
-                                                                        <%= error_msg %>
-                                                                    </div>
-                                                                    <% } %>
-                                                    </div>
-                                                    <div class="text-center mb-3">
-                                                        <h6>Your Balance: <span id="balance" class="fw-bold text-success">
-                                                                <p>
-                                                                    <%= user.balance.toFixed(3) %>
-                                                                </p>
-                                                            </span></h6>
-                                                        <h3>Earn 0.3</h3>
-                                                    </div>
-                                                    <div class="text-center mb-3">
-                                                    <button class="btn btn-primary w-50 text-center mb-3" type="submit" <%=taskLocked ? 'disabled' : ''
-                                                        %>>Start-offer</button>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                            </form>
-                                            <% if (taskLocked) { %>
-                                                <p>You’ve already completed this task. Please try again after 24 hours.</p>
-                                                <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <%- include('../partials/newfoot') %>
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                      <div class="container py-5">
+                        
+                        <!-- Flash Messages -->
+                        <div class="row justify-content-center mb-3">
+                          <div class="col-md-8 text-center">
+                            <% if (success_msg && success_msg.length > 0) { %>
+                              <div class="alert alert-success"><%= success_msg %></div>
+                            <% } %>
+                            <% if (error_msg && error_msg.length > 0) { %>
+                              <div class="alert alert-danger"><%= error_msg %></div>
+                            <% } %>
+                          </div>
                         </div>
+
+                        <div class="text-center mb-4">
+                          <h4>Daily Offers</h4>
+                          <h6>Your Balance: <span id="balance" class="fw-bold text-success">$<%= user.balance.toFixed(3) %></span></h6>
+                          <p class="text-muted">Detected Device: <strong class="text-uppercase"><%= userDevice %></strong></p>
+                        </div>
+
+                        <% if (taskLocked) { %>
+                          <div class="alert alert-warning text-center">
+                            You’ve already completed this task. Please try again after 24 hours.
+                          </div>
+                        <% } else if (offers.length === 0) { %>
+                          <!-- Default Fallback Offer Card if API returns no offers -->
+                          <div class="row justify-content-center">
+                            <div class="col-md-6">
+                              <div class="card shadow-sm text-center p-4">
+                                <h5>Earn $0.05</h5>
+                                <p class="text-muted">Complete the daily task to earn your reward.</p>
+                                <form action="/complete-task" method="POST">
+                                  <button class="btn btn-primary w-50" type="submit">Start Offer</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        <% } else { %>
+                          <!-- Dynamic API Offers List -->
+                          <div class="row g-4 justify-content-center">
+                            <% offers.forEach(offer => { %>
+                              <div class="col-md-4">
+                                <div class="card h-100 shadow-sm text-center border-0">
+                                  <div class="card-body d-flex flex-column justify-content-between">
+                                    <div>
+                                      <% if (offer.offer_icon) { %>
+                                        <img src="<%= offer.offer_icon %>" alt="Offer Icon" class="mb-3 rounded" style="width: 50px; height: 50px;">
+                                      <% } %>
+                                      <h5 class="fw-bold"><%= offer.title %></h5>
+                                      <p class="text-muted small"><%= offer.description || 'Complete instructions to receive reward.' %></p>
+                                      <h4 class="text-success fw-bold my-3">Earn $<%= parseFloat(offer.payout).toFixed(2) %></h4>
+                                    </div>
+
+                                    <form action="/complete-task" method="POST">
+                                      <input type="hidden" name="offerUrl" value="<%= offer.offerlink %>">
+                                      <button class="btn btn-primary w-100 fw-bold" type="submit">Start Offer</button>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            <% }); %>
+                          </div>
+                        <% } %>
+
+                      </div>
+                      
+                    </div>
+                    <%- include('../partials/newfoot') %>
+                  </div>
                     
                     </div>
                     </div>
