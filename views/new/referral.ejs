@@ -253,7 +253,7 @@
                           </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">Total Referrals</span>
-                        <h3 class="card-title text-nowrap mb-0"><%= user.referralCount%> pts</h3>
+                        <h3 class="card-title text-nowrap mb-0"><%= user.referralCount%></h3>
                       </div>
                     </div>
                   </div>
@@ -270,7 +270,7 @@
                           </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">Referrals Earnings</span>
-                        <h3 class="card-title text-nowrap mb-0"><%= user.totalRefEarned.toFixed(4) %> pts</h3>
+                        <h3 class="card-title text-nowrap mb-0"><%= user.totalRefEarned.toFixed(6) %> pts</h3>
                       </div>
                     </div>
                   </div>
@@ -281,7 +281,7 @@
                      <div class="row">
                           <div class="col-md-12">
                             <div class="card p-3">
-                              <h5>Your Referral Link</h5>
+                              <h5>Your Referral Link(earn 5% of your referrals earnings for live...)</h5>
                                  <div class="input-group">
                                   <input type="text" id="referralLink" class="form-control" value="<%= `https://fluwentcash.online/register?ref=${user.username}`%>" readonly>
                                   <button class="btn btn-primary copy-btn" onclick="copyReferralLink()">Copy</button>
