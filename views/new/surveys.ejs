@@ -33,67 +33,18 @@
     <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css" />
     <script src="/assets/vendor/js/helpers.js"></script>
     <script src="/assets/js/config.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f7f6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-
-    .social-container {
-      display: flex;
-      gap: 15px;
-    }
-
-    .social-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .social-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .social-btn i {
-      font-size: 22px;
-    }
-
-    /* Brand Colors */
-    .whatsapp {
-      background-color: #25D366;
-    }
-
-    .telegram {
-      background-color: #0088cc;
-    }
-  </style>
   </head>
 
   <body>
 
-    <!-- ADBLOCKER OVERLAY -->
-      <div id="adblock-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh; font-family: sans-serif;">
-        <div style="max-width: 500px; margin: 0 auto; background: #222; padding: 40px; border-radius: 8px; border: 1px solid #ff4444;">
-          <h2 style="color: #ff4444; margin-bottom: 20px;">Ad Blocker Detected!</h2>
-          <p style="font-size: 16px; line-height: 1.6;">Our network is supported by advertisements. To access your dashboard and claim rewards, you must completely disable your Ad Blocker or whitelist our domain.</p>
-          <button onclick="window.location.reload()" style="margin-top: 25px; padding: 12px 30px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">I have disabled it, Refresh</button>
-        </div>
-      </div>
+     <!-- ADBLOCKER OVERLAY -->
+<div id="adblock-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh; font-family: sans-serif;">
+  <div style="max-width: 500px; margin: 0 auto; background: #222; padding: 40px; border-radius: 8px; border: 1px solid #ff4444;">
+    <h2 style="color: #ff4444; margin-bottom: 20px;">Ad Blocker Detected!</h2>
+    <p style="font-size: 16px; line-height: 1.6;">Our network is supported by advertisements. To access your dashboard and claim rewards, you must completely disable your Ad Blocker or whitelist our domain.</p>
+    <button onclick="window.location.reload()" style="margin-top: 25px; padding: 12px 30px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">I have disabled it, Refresh</button>
+  </div>
+</div>
 <!-- /ADBLOCKER OVERLAY -->
     
 <div id="layout-wrapper" class="layout-wrapper layout-content-navbar">
@@ -114,7 +65,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -156,7 +107,7 @@
               </ul>
             </li>
 
-            <li class="menu-item">
+            <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="bx bx-book-open"></i>
                 <div data-i18n="Layouts">Offerwall</div>
@@ -169,7 +120,7 @@
                     <div data-i18n="Without menu">Timewall</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item active">
                   <a href="/surveys" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-poll"></i>
                     <div data-i18n="Fluid">CPX-research</div>
@@ -235,7 +186,6 @@
               </a>
             </div>
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse"></div>
-
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
             
@@ -262,7 +212,7 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block"><%= userProfile.username %>!</span>
+                            <span class="fw-semibold d-block"><%= user.username %>!</span>
                             <small class="text-muted">Username</small>
                           </div>
                         </div>
@@ -292,163 +242,58 @@
               </ul>
             </div>
           </nav>
-          <!-- Content wrapper -->
-          <div class="content-wrapper">
-            <!-- Content -->
-
+                    
+            <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Profile Settings /</span> Profile</h4>
+              <div class="card bg-[#595cd9]/15 text-white border-secondary p-4 mb-4 shadow-sm text-center">
+                <h3 class="text-[#595cd9] mb-2">Earn Free Points</h3>
+                <p class="text-secondary mb-3">Open CPX-research in an external window for full task compatibility.</p>
+                <button class="btn btn-lg font-weight-bold bg-[#595cd9] text-white" onclick="openTimeWallExternal()">
+                  Open CPX-research Tasks in Browser
+                </button>
+              </div>
 
-              <div class="row">
-                <div class="col-md-12">
-                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Account</a>
-                    </li>
-                  </ul>
-                  <div class="card mb-4">
-                    <h5 class="card-header">Profile Details</h5>
-                    <!-- Account -->
-                    <div class="card-body">
-                      <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img
-                          src="/images/pro.jpg"
-                          alt="user-avatar"
-                          class="d-block rounded"
-                          height="100"
-                          width="100"
-                          id="uploadedAvatar"
-                        />
-                        
-                      </div>
-                    </div>
-                    <hr class="my-0" />
-                    <div class="card-body">
-                      <form id="formAccountSettings" method="POST" onsubmit="return false">
-                        <div class="row">
-                          <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">Username</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="email"
-                              name="username"
-                              value="<%= userProfile.username %>"
-                              placeholder="username"
-                              disabled
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="firstName"
-                              name="firstName"
-                              value="<%= userProfile.name %>"
-                              autofocus
-                              disabled
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="<%= userProfile.lname %>" disabled />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">E-mail</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="email"
-                              name="email"
-                              value="<%= userProfile.email %>"
-                              placeholder="email"
-                              disabled
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">Referral code</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="email"
-                              name="email"
-                              value="<%=userProfile.username%>"
-                              placeholder="referral code"
-                              disabled
-                            />
-                          </div>
-                          
-                          <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">Since</label>
-                            <input
-                              class="form-control"
-                              type="text"
-                              id="email"
-                              name="date of register"
-                              value="<%= new Date(userProfile.createdAt).toLocaleString() %>"
-                              placeholder="datejoin"
-                              disabled
-                            />
-                          </div>
-                        
-                        </div>
-                        <div class="social-container">
-                        <!-- WhatsApp Link: Replace '1234567890' with your phone number (including country code) -->
-                        <a href="https://whatsapp.com/channel/0029VbDMPrD6BIEiBANmbc3A" target="_blank" class="social-btn whatsapp">
-                          <i class="fa-brands fa-whatsapp"></i>
-                          <span>WhatsApp</span>
-                        </a>
-
-                        <!-- Telegram Link: Replace 'yourusername' with your Telegram handle -->
-                        <a href="https://t.me/fluwentcash" target="_blank" class="social-btn telegram">
-                          <i class="fa-brands fa-telegram"></i>
-                          <span>Telegram</span>
-                        </a>
-                      </div>
-                      </form>
-                    </div>
-                    <!-- /Account -->
-                  </div>
+              <!-- TIMEWALL PLACEMENT -->
+              <div class="card bg-[#595cd9]/15 text-white border-secondary p-3 shadow-sm">
+                <h3 class="text-[#595cd9] mb-3">Complete Surveys</h3>
+                <div style="min-height: 1000px; width: 100%;">
+                  <iframe 
+                    title="TimeWall" 
+                    src="https://offers.cpx-research.com/index.php?app_id=<%= cpxAppId %>&ext_user_id=<%= user._id %>&username=<%= encodeURIComponent(user.name) %>&email=<%= encodeURIComponent(user.email) %>"  
+                    frameborder="0" 
+                    width="100%" 
+                    height="1000" 
+                    scrolling="auto"
+                    style="background: #ffffff; border-radius: 8px;">
+                  </iframe>
                 </div>
               </div>
             </div>
-            <!-- / Content -->
-
-            <div class="content-backdrop fade"></div>
             <%- include('../partials/newfoot') %>
           </div>
-        </div>
-
-  </div>
-  <div class="layout-overlay layout-menu-toggle"></div>
-  
-</div>
-
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-     <script src="https://cdn.tailwindcss.com"></script>
+                    
+                    </div>
+                    </div>
+                    
+                    </div>
+                    <div class="layout-overlay layout-menu-toggle"></div>
+                    
+                    </div>
+                    
+                    <!-- Core JS -->
+                    <!-- build:js assets/vendor/js/core.js -->
+    <script src="https://cdn.tailwindcss.com"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="/assets/vendor/libs/popper/popper.js"></script>
     <script src="/assets/vendor/js/bootstrap.js"></script>
     <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
     <script src="/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
     <script src="/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
-    <!-- Main JS -->
     <script src="/assets/js/main.js"></script>
-
-    <!-- Page JS -->
     <script src="/assets/js/dashboards-analytics.js"></script>
-
-    <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- INTEGRATED ADBLOCK ENGINE -->
     <script>
@@ -525,6 +370,16 @@
           handleAdBlocker();
         }
       });
+
+      function openTimeWallExternal() {
+        const userId = "<%= user._id %>";
+        const timeWallUrl = `https://offers.cpx-research.com/index.php?app_id=<%= cpxAppId %>&ext_user_id=${userId}&username=<%= encodeURIComponent(user.name) %>&email=<%= encodeURIComponent(user.email) %>`;
+        if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData) {
+          window.Telegram.WebApp.openLink(timeWallUrl);
+        } else {
+          window.open(timeWallUrl, '_blank');
+        }
+      }
     </script>
   </body>
 </html>

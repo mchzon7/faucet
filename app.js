@@ -35,6 +35,8 @@ const webhookRoutes = require('./routes/webhookRoutes');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const Rcontest = require("./routes/ReferralContest");
+const surveyRoutes = require('./routes/surveyRoutes');
+const postbackRoutes = require('./routes/postbackRoutes');
 
 
 
@@ -113,6 +115,8 @@ app.use("/", Cards)
 app.use(webhookRoutes);
 app.use(conversion);
 app.use(Rcontest);
+app.use('/', surveyRoutes);
+app.use('/api/cpx', postbackRoutes);
 
 
 app.listen(PORT, ()=> console.log(`server is running at http://localhost${PORT}`));
