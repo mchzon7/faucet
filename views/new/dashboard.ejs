@@ -55,7 +55,7 @@
           <div class="app-brand demo">
             <a href="/" class="app-brand-link">
               <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
-              <span class="app-brand-text demo menu-text fw-bolder ms-2"><%= appName %></span>
+                <span class="app-brand-text demo text-body fw-bolder"><%= appName %></span>
             </a>
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -420,7 +420,7 @@
                                       <td><%= index + 1 %></td>
                                       <td><%= withdrawal.amount %></td>
                                       <td>
-                                        <span class="badge bg-label-<%= withdrawal.status === 'Completed' ? 'success' : withdrawal.status === 'Pending' ? 'warning' : 'danger' %>">
+                                        <span class="badge bg-label-<%= withdrawal.status === 'Completed' ? 'success' : withdrawal.status === 'Pending' ? 'warning' : 'primary me-1' %>">
                                           <%= withdrawal.status %>
                                         </span>
                                       </td>

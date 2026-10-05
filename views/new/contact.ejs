@@ -55,7 +55,7 @@
           <div class="app-brand demo">
             <a href="/" class="app-brand-link">
               <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
-              <span class="app-brand-text demo menu-text fw-bolder ms-2"><%= appName %></span>
+                <span class="app-brand-text demo text-body fw-bolder"><%= appName %></span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -67,7 +67,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -267,6 +267,7 @@
                                 placeholder="Name"
                                 aria-label="Name"
                                 aria-describedby="basic-icon-default-fullname2"
+                                required
                               />
                             </div>
                           </div>
@@ -277,13 +278,14 @@
                             <div class="input-group input-group-merge">
                               <span class="input-group-text"><i class="bx bx-envelope"></i></span>
                               <input
-                                type="text"
+                                type="email"
                                 id="basic-icon-default-email"
                                 name="email"
                                 class="form-control"
                                 placeholder="your-email"
                                 aria-label="email"
                                 aria-describedby="basic-icon-default-email2"
+                                required
                               />
                               <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
                             </div>
@@ -304,6 +306,7 @@
                                 placeholder="Subject."
                                 aria-label="Subject."
                                 aria-describedby="basic-icon-default-company2"
+                                required
                               />
                             </div>
                           </div>
@@ -322,6 +325,7 @@
                                 placeholder="enter your message"
                                 aria-label="enter your message"
                                 aria-describedby="basic-icon-default-message2"
+                                required
                               ></textarea>
                             </div>
                           </div>
