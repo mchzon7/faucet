@@ -54,7 +54,7 @@
   <div class="layout-container">
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="/" class="app-brand-link">
+            <a href="/" class="app-brand-link" onclick="handleClaimReward()">
               <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
                 <span class="app-brand-text demo text-body fw-bolder"><%= appName %></span>
             </a>
@@ -577,5 +577,30 @@
          }
       }, 5000);
     </script>
+    <script>
+  // Define your user ID based on your system
+  const userId = "<%= user._id %>";
+
+  // Configuration
+  window.ADSLAB_INT = 'int-EvyLEwHa3DM4'; 
+  window.ADSLAB_REW = 'rew-JJOFb6V61vus';     
+  window.ADSLAB_USER = String(userId);            
+
+  // Load SDK
+  (function () {
+    var s = document.createElement('script');
+    s.src = 'https://adslab.me/api/sdk.js';
+    s.async = true;
+    document.head.appendChild(s);
+  })();
+</script>
+<script>
+  // Show rewarded ad anywhere in your app
+  function handleClaimReward() {
+    if (window.adslabShowRewarded) {
+      window.adslabShowRewarded();
+    }
+  }
+</script>
   </body>
 </html>

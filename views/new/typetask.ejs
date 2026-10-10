@@ -330,7 +330,7 @@
             <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
             <div class="text-center">
-              <button id="submit-btn" type="submit" class="btn btn-primary w-50 fw-semibold py-2 shadow-sm">Submit Answer</button>
+              <button id="submit-btn" type="submit" class="btn btn-primary w-50 fw-semibold py-2 shadow-sm" onclick="handleClaimReward()">Submit Answer</button>
             </div>
           </form>
         </div>
@@ -558,6 +558,31 @@
         // Run the check on page load
         checkCooldown();
       });
+</script>
+<script>
+  // Define your user ID based on your system
+  const userId = "<%= user._id %>";
+
+  // Configuration
+  window.ADSLAB_INT = 'int-EvyLEwHa3DM4'; 
+  window.ADSLAB_REW = 'rew-JJOFb6V61vus';     
+  window.ADSLAB_USER = String(userId);            
+
+  // Load SDK
+  (function () {
+    var s = document.createElement('script');
+    s.src = 'https://adslab.me/api/sdk.js';
+    s.async = true;
+    document.head.appendChild(s);
+  })();
+</script>
+<script>
+  // Show rewarded ad anywhere in your app
+  function handleClaimReward() {
+    if (window.adslabShowRewarded) {
+      window.adslabShowRewarded();
+    }
+  }
 </script>
   </body>
 </html>
