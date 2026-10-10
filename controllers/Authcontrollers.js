@@ -13,6 +13,8 @@ const { Resend } = require("resend");
 
 
 router.get('/', homeController.getHomePage);
+router.get('/6aca05c24f3bba4b0abfd4eb.html', (req, res) => res.render('6aca05c24f3bba4b0abfd4eb.html'));
+router.get('/ads.txt', (req, res) => res.render('ads.txt'));
 router.get('/blog', blogController.getBlogIndex);
 router.get('/refresh', (req, res) => {
     res.render('../views/new/refreshpage');
