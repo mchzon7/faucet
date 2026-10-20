@@ -15,16 +15,13 @@
     />
     <meta name="google-adsense-account" content="ca-pub-3212109408702658">
     <meta name="website-verification" content="6aca05c24f3bba4b0abfd4eb">
-
    <title><%= title ? title : appName %></title>
-
     <meta name="description" content="" />
-
     <link rel="icon" type="image/x-icon" href="/images/kkk.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght=0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
@@ -39,9 +36,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3212109408702658"
      crossorigin="anonymous"></script>
   </head>
-
   <body>
-
       <!-- ADBLOCKER OVERLAY -->
 <div id="adblock-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh; font-family: sans-serif;">
   <div style="max-width: 500px; margin: 0 auto; background: #222; padding: 40px; border-radius: 8px; border: 1px solid #ff4444;">
@@ -51,7 +46,6 @@
   </div>
 </div>
 <!-- /ADBLOCKER OVERLAY -->
-
     
 <div id="layout-wrapper" class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
@@ -61,14 +55,11 @@
               <img src="/images/kkk.jpg" width="25" height="20" alt="Fluwent Logo">
                 <span class="app-brand-text demo text-body fw-bolder"><%= appName %></span>
             </a>
-
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
             </a>
           </div>
-
           <div class="menu-inner-shadow"></div>
-
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item">
@@ -77,14 +68,12 @@
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
-
             <!-- Menu -->
             <li class="menu-item active open">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="bx bx-list-ul"></i>
                 <div data-i18n="Layouts">Faucet List</div>
               </a>
-
               <ul class="menu-sub">
                 <li class="menu-item active">
                   <a href="/math" class="menu-link">
@@ -112,13 +101,11 @@
                 </li>
               </ul>
             </li>
-
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="bx bx-book-open"></i>
                 <div data-i18n="Layouts">Offerwall</div>
               </a>
-
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="/timewall" class="menu-link">
@@ -182,7 +169,6 @@
               <!-- mmmmm-->
           </ul>
         </aside>
-
         <div class="layout-page">
           <%- include('../partials/othererror') %>
         <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
@@ -193,16 +179,13 @@
               </a>
             </div>
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse"></div>
-
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
             
               <!-- /Search -->
-
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
                 
-
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -250,11 +233,9 @@
               </ul>
             </div>
           </nav>
-
       <div class="content-wrapper">
   <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row g-4 justify-content-center">
-
       <div class="col-12 col-lg-3 text-center d-flex flex-column gap-4">
         <div class="sticky-top" style="top: 20px; z-index: 10;">
           <span class="text-muted small d-block mb-1">Advertisement</span>
@@ -268,7 +249,6 @@
               </div>
             <% }) %>
           <% } %>
-
           <div class="d-flex justify-content-center">
             <script>
             atOptions = {
@@ -283,9 +263,7 @@
           </div>
         </div>
       </div>
-
       <div class="col-12 col-lg-6">
-
         <div class="text-center mb-4">
           <span class="text-muted small d-block mb-1">Advertisement</span>
           <iframe src="https://ad2bitcoin.com/ad.php?ref=Chizon7&width=728" marginwidth="0" marginheight="0" width="320" height="50" scrolling="no" border="0" frameborder="0"></iframe>
@@ -301,15 +279,12 @@
         </script>
         <script src="https://bauval.org/22/14655066dbfe1f54d8446be446e2aa2e"></script>
         </div>
-
         <div class="captcha-card shadow-sm p-4 bg-white rounded border mb-4">
-          <form action="/solve-captcha" method="POST">
+          <form action="/solve-captcha" method="POST" onsubmit="handlePlayClick()">
             
-
             <div class="text-center mb-3">
               <h6>Your Balance: <span id="balance" class="fw-bold text-success"><%= user.balance.toFixed(2) %></span></h6>
             </div>
-
             <div class="text-center mb-2 bg-light py-2 rounded border border-dashed">
               <span class="form-label fw-semibold fs-5">Solve: <%= a %> + <%= b %></span>
             </div>
@@ -319,27 +294,22 @@
             
             <div class="h-captcha d-flex justify-content-center mb-3" data-sitekey="e3e20fc8-8e30-4240-8c94-2282825260b2"></div>
             <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-
             <div class="text-center">
-              <button id="submit-mth" type="submit" class="btn btn-primary w-50 fw-semibold py-2 shadow-sm" onclick="handlePlayClick()">Submit Answer</button>
+              <button id="submit-mth" type="submit" class="btn btn-primary w-50 fw-semibold py-2 shadow-sm">Submit Answer</button>
             </div>
           </form>
         </div>
-
         <div class="text-center my-4 py-3 border-top border-bottom bg-light">
           <span class="text-muted small d-block mb-1">Sponsored Content</span>
 <iframe src="https://ad2bitcoin.com/ad.php?ref=Chizon7&width=728" marginwidth="0" marginheight="0" width="320" height="60" scrolling="no" border="0" frameborder="0"></iframe>
           <iframe src="/ads" marginwidth="0" marginheight="0" width="320" height="50" scrolling="no" border="0" frameborder="0"></iframe>
         </div>
-
         <div class="text-center mt-4">
           <span class="text-muted small d-block mb-1">Advertisement</span>
           <script async="async" data-cfasync="false" src="//pl26969558.profitableratecpm.com/664af624c2362a648958bc24f9fde84c/invoke.js"></script>
           <div id="container-664af624c2362a648958bc24f9fde84c"></div>
         </div>
-
       </div>
-
       <div class="col-12 col-lg-3 text-center d-flex flex-column gap-4">
         <div class="sticky-top" style="top: 20px; z-index: 10;">
           <span class="text-muted small d-block mb-1">Advertisement</span>
@@ -351,19 +321,8 @@
                   <img src="<%= ad.imageUrl %>" class="img-fluid rounded border mb-2" style="max-width:250px;" />
                 </a>
               </div>
-              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3212109408702658"
-                  crossorigin="anonymous"></script>
-              <ins class="adsbygoogle"
-                  style="display:block"
-                  data-ad-format="autorelaxed"
-                  data-ad-client="ca-pub-3212109408702658"
-                  data-ad-slot="7478853505"></ins>
-              <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
             <% }) %>
           <% } %>
-
           <div class="d-flex justify-content-center">
             <script>
             atOptions = {
@@ -388,23 +347,17 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
   
   <%- include('../partials/newfoot') %>
 </div>
-
          
-
-
         </div>
-
   </div>
   <div class="layout-overlay layout-menu-toggle"></div>
   
 </div>
-
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
      <script src="https://cdn.tailwindcss.com"></script>
@@ -413,23 +366,17 @@
     <script src="/assets/vendor/libs/popper/popper.js"></script>
     <script src="/assets/vendor/js/bootstrap.js"></script>
     <script src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
     <script src="/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
-
     <!-- Vendors JS -->
     <script src="/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
     <!-- Main JS -->
     <script src="/assets/js/main.js"></script>
-
     <!-- Page JS -->
     <script src="/assets/js/dashboards-analytics.js"></script>
-
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- INTEGRATED ADBLOCK ENGINE -->
     <script>
       function placeholderProbe() {
@@ -444,7 +391,6 @@
           testElement.style.opacity = '0';
           testElement.style.pointerEvents = 'none';
           document.body.appendChild(testElement);
-
           const rect = testElement.getBoundingClientRect();
           const style = window.getComputedStyle(testElement);
           const blocked =
@@ -452,12 +398,10 @@
             style.visibility === 'hidden' ||
             rect.width === 0 ||
             rect.height === 0;
-
           testElement.remove();
           resolve(blocked);
         });
       }
-
       function networkProbe() {
         return new Promise((resolve) => {
           const script = document.createElement('script');
@@ -466,12 +410,10 @@
               script.parentNode.removeChild(script);
             }
           };
-
           const timer = window.setTimeout(() => {
             cleanup();
             resolve(false);
           }, 600);
-
           script.async = true;
           script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?cb=' + Date.now();
           script.onload = () => {
@@ -484,11 +426,9 @@
             cleanup();
             resolve(true);
           };
-
           document.head.appendChild(script);
         });
       }
-
       function handleAdBlocker() {
         document.getElementById("adblock-overlay").style.display = "block";
         const dashboardContent = document.getElementById("layout-wrapper");
@@ -496,7 +436,6 @@
           dashboardContent.style.display = "none";
         }
       }
-
       window.addEventListener('DOMContentLoaded', async function() {
         const placeholderBlocked = await placeholderProbe();
         const adRequestBlocked = await networkProbe();
@@ -507,13 +446,11 @@
       });
     </script>
     <script>
-  window.addEventListener('DOMContentLoaded', function() {
+ window.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.getElementById('submit-mth');
     const form = submitBtn ? submitBtn.closest('form') : null;
-    const cooldownTime = 1 * 60 * 1000; // 3 minutes in milliseconds
-
+    const cooldownTime = 1 * 60 * 1000; // 1 minute in milliseconds
     if (!submitBtn || !form) return;
-
     function checkCooldown() {
       const lastSubmit = localStorage.getItem('captcha_last_submit');
       
@@ -523,47 +460,34 @@
         if (elapsed < cooldownTime) {
           const remaining = cooldownTime - elapsed;
           submitBtn.disabled = true;
-
-          // Calculate remaining minutes and seconds
           const secondsLeft = Math.ceil(remaining / 1000);
           const minutes = Math.floor(secondsLeft / 60);
           const seconds = secondsLeft % 60;
           
-          // Format seconds with leading zero if needed
           const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
           
-          // Update button text with the countdown
           submitBtn.textContent = `Wait ${minutes}:${formattedSeconds}`;
-
-          // Check again in 1 second
           setTimeout(checkCooldown, 1000);
           return;
         }
       }
       
-      // Re-enable button once cooldown has passed
       submitBtn.disabled = false;
       submitBtn.textContent = "Submit Answer";
     }
-
-    // Capture the click/submit action to initiate the cooldown
     form.addEventListener('submit', function() {
       localStorage.setItem('captcha_last_submit', Date.now().toString());
     });
-
-    // Run the check on page load
     checkCooldown();
-  });
+ });
 </script>
 <script>
-  // Define your user ID based on your system
+  // Define your user ID based on your system template variables
   const userId = "<%= user._id %>";
-
   // Configuration
   window.ADSLAB_INT = 'int-EvyLEwHa3DM4'; 
   window.ADSLAB_REW = 'rew-JJOFb6V61vus';     
   window.ADSLAB_USER = String(userId);            
-
   // Load SDK
   (function () {
     var s = document.createElement('script');
@@ -573,10 +497,10 @@
   })();
 </script>
 <script>
-  // Show interstitial anywhere in your app (e.g. on button click)
+  // Corrected function call mapping to match standard Adslab Interstitial methods
   function handlePlayClick() {
-    if (window.adslabShowInterstitial) {
-      window.adslabShowInterstitial();
+    if (typeof window.showAdslabInterstitial === 'function') {
+      window.showAdslabInterstitial();
     }
   }
 </script>

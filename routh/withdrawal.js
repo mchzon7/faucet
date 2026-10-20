@@ -46,7 +46,7 @@ router.post("/withdraw",protect, async (req, res) => {
     }
 
     if (amount < 1) {
-      req.flash("error_msg", "The menimum withrawal is 3usd");
+      req.flash("error_msg", "The minimum withdrawal is 1 point");
       return res.redirect("/withdrawal");
     }
 
@@ -55,11 +55,11 @@ router.post("/withdraw",protect, async (req, res) => {
       return res.redirect("/withdrawal");
     }
 
-    if (userId.balance >= 3) {
+    if (userId) {
       const user = await User.findById(userId);
       const apiKey = process.env.WithdrawKey;
       const to = wallet;
-      const amonn = parseInt(amount * 100000000);
+      const amonn = parseInt(amount * 70000000);
       const currency = "USDT";
 
       const data = new URLSearchParams();
@@ -89,7 +89,7 @@ router.post("/withdraw",protect, async (req, res) => {
             }
           })
           .catch(() => {
-            req.flash("error_msg", "Minimum balance required: 3 USDT");
+            req.flash("error_msg", "Minimum balance required: 1 points");
             return res.render("../views/new/withdrawal",{user, appName: process.env.APP_NAME, title: 'FluwentCash'});
           });
     }

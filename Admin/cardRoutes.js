@@ -322,7 +322,7 @@ router.post('/redeem-card',protect, async (req, res) => {
         }
 
         // Match schema field name (e.g., if you use user.balance or user.points)
-        if (user.balance < card.pointsRequired) {
+        if (user.points < card.pointsRequired) {
             req.flash('error_msg', 'Insufficient points to redeem this card');
             return res.redirect('/available-cards');
         }
@@ -333,7 +333,7 @@ router.post('/redeem-card',protect, async (req, res) => {
         }
 
         // 6. Process redemption
-        user.balance -= card.pointsRequired;
+        user.points -= card.pointsRequired;
         await user.save();
 
         req.session.user = user;
