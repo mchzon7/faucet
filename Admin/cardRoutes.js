@@ -256,7 +256,7 @@ router.get('/available-cards',protect, async (req, res) => {
         res.render('cards/Available', {
             title: 'Available Cards',
             cards: cardsWithStatus, // Use this in your frontend loop!
-            userPoints: user.balance, // 3. Added missing  operator
+            userPoints: user.points, // 3. Added missing  operator
             success: req.flash('success'),
             error: req.flash('error'),
             warning: req.flash('warning'),
